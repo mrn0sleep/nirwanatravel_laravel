@@ -1,27 +1,5 @@
 <x-guest-layout>
 
-    <!-- NAV (opsional, biasanya di layout, bukan di sini) -->
-    <nav class="flex items-center justify-end gap-4 mb-4">
-        @auth
-            <a href="{{ url('/dashboard') }}"
-               class="inline-block px-5 py-1.5 border rounded-sm text-sm">
-                Dashboard
-            </a>
-        @else
-            <a href="{{ route('login') }}"
-               class="inline-block px-5 py-1.5 rounded-sm text-sm">
-                Log in
-            </a>
-
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}"
-                   class="inline-block px-5 py-1.5 border rounded-sm text-sm">
-                    Register
-                </a>
-            @endif
-        @endauth
-    </nav>
-
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
