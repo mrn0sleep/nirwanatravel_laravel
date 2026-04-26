@@ -28,9 +28,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Logic redirect berdasarkan role (Pastikan kolom 'role' sudah ada di DB ya!)
+        if ($request->user()->role === 'admin') {
+            return redirect()->intended(route('admin.dashboard'));
+        }
+
+        return redirect()->intended(route('dashboard'));
     }
 
+        
     /**
      * Destroy an authenticated session.
      */
