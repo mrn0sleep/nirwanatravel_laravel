@@ -1,11 +1,29 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+|--------------------------------------------------------------------------
+| Web Routes (Public)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', [PageController::class, 'beranda'])->name('beranda');
+Route::get('/tentangkami', [PageController::class, 'tk'])->name('tk');
+Route::get('/layanan', [PageController::class, 'lyn'])->name('lyn');
+Route::get('/layanan/{id}', [PageController::class, 'dtk'])->name('dtk');
+Route::get('/detail-paket', function () {
+    return view('detailtk');
+})->name('detailtk');
+
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard (Login Required)
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/dashboard', function () {
     return view('dashboard');
