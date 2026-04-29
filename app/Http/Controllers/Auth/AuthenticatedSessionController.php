@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         // Logic redirect berdasarkan role (Pastikan kolom 'role' sudah ada di DB ya!)
         if ($request->user()->role === 'admin') {
-            return redirect()->intended(route('admin.dashboard'));
+            return redirect()->intended('/admin'); 
         }
 
         return redirect()->intended(route('dashboard'));
