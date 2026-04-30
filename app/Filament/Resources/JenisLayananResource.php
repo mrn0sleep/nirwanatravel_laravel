@@ -25,7 +25,7 @@ class JenisLayananResource extends Resource
     protected static ?string $navigationLabel = 'Jenis Layanan';
 
     protected static ?string $modelLabel = 'Jenis Layanan';
-    
+
     protected static ?string $pluralModelLabel = 'Jenis Layanan';
 
     public static function form(Form $form): Form
@@ -41,6 +41,12 @@ class JenisLayananResource extends Resource
                 ->label('Penjelasan singkat')
                 ->rows(3)
                 ->required(),
+
+            Textarea::make('deskripsi')
+                ->label('Deskripsi lengkap')
+                ->rows(5)
+                ->nullable()
+                ->columnSpanFull(),
 
             Select::make('jenis_wisata')
                 ->label('Jenis wisata')
@@ -89,6 +95,48 @@ class JenisLayananResource extends Resource
                 ->collapsible()
                 ->columnSpanFull(),
 
+            Repeater::make('fasilitas')
+                ->label('Fasilitas')
+                ->relationship()
+                ->schema([
+                    TextInput::make('nama')
+                        ->label('Nama fasilitas')
+                        ->required(),
+                    TextInput::make('urutan')
+                        ->label('Urutan')
+                        ->numeric()
+                        ->default(null),
+                ])
+                ->orderColumn('urutan')
+                ->addActionLabel('+ Tambah fasilitas')
+                ->collapsible()
+                ->columnSpanFull(),
+
+            Repeater::make('keunggulanPaket')
+                ->label('Keunggulan Paket')
+                ->relationship()
+                ->schema([
+                    TextInput::make('isi')
+                        ->label('Poin keunggulan')
+                        ->required(),
+                    TextInput::make('urutan')
+                        ->label('Urutan')
+                        ->numeric()
+                        ->default(null),
+                ])
+                ->orderColumn('urutan')
+                ->addActionLabel('+ Tambah keunggulan')
+                ->collapsible()
+                ->columnSpanFull(),
+
+            Repeater::make('itinerary')->label('Itinerary')->relationship()->schema([
+            TextInput::make('hari')->label('Hari ke-')->numeric()->required(),
+            Textarea::make('deskripsi')->label('Deskripsi')->rows(3)->required(),])
+            ->orderColumn('hari')
+            ->addActionLabel('+ Tambah hari')
+            ->collapsible()
+            ->columnSpanFull(),
+
         ]);
     }
 
@@ -118,8 +166,11 @@ class JenisLayananResource extends Resource
             TextColumn::make('lokasi')
                 ->label('Lokasi'),
 
+        ])
+        ->actions([
+            Tables\Actions\EditAction::make()->label('Edit'),
+            Tables\Actions\DeleteAction::make()->label('Hapus'),
         ]);
-        
     }
 
     public static function getPages(): array
