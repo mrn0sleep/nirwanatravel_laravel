@@ -13,6 +13,7 @@ class JenisLayanan extends Model
     protected $fillable = [
         'nama',
         'p_singkat',
+        'deskripsi',
         'jenis_wisata',
         'harga',
         'durasi',
@@ -31,7 +32,21 @@ class JenisLayanan extends Model
 
     public function syaratKetentuan(): HasMany
     {
-        return $this->hasMany(SyaratKetentuan::class, 'jenis_layanan_id')
-                    ->orderBy('urutan');
+        return $this->hasMany(SyaratKetentuan::class, 'jenis_layanan_id')->orderBy('urutan');
+    }
+    
+    public function fasilitas(): HasMany
+    {
+        return $this->hasMany(Fasilitas::class, 'jenis_layanan_id')->orderBy('urutan');
+    }
+
+    public function keunggulanPaket(): HasMany
+    {
+        return $this->hasMany(KeunggulanPaket::class, 'jenis_layanan_id')->orderBy('urutan');
+    }
+
+    public function itinerary(): HasMany
+    {
+        return $this->hasMany(Itinerary::class, 'jenis_layanan_id')->orderBy('hari');
     }
 }
