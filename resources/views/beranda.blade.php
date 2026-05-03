@@ -372,7 +372,7 @@ footer h4 { font-size: .73rem; font-weight: 700; letter-spacing: .12em; text-tra
           <i class="bi bi-chevron-down" style="font-size:.6rem;"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-end mt-2 rounded-3 shadow-lg" style="min-width:180px;">
-          <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profil</a></li>
+          <li><a class="dropdown-item" href="{{ route('dashboard') }}"><i class="bi bi-person me-2"></i>Profil</a></li>
           <li><hr class="dropdown-divider"></li>
           <li>
             <form method="POST" action="{{ route('logout') }}">
