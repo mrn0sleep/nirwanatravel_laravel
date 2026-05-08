@@ -1,240 +1,214 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ $paket->nama }} — Nirwana Tour &amp; Travel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ $paket->nama }} — Nirwana Tour &amp; Travel</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-  <style>
-    /* ── RESET ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; color: #111827; background: #fff; }
-    a { text-decoration: none; }
+<style>
+/* ── RESET ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; color: #111827; background: #fff; }
+a { text-decoration: none; }
 
-    /* ── NAVBAR (sama persis dengan layanan.blade.php) ─── */
-    .navbar-main {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      height: 68px; padding: 0 28px;
-      display: flex; align-items: center;
-      background: rgba(12,29,58,.96); backdrop-filter: blur(14px);
-      box-shadow: 0 2px 20px rgba(0,0,0,.22);
-    }
-    .nav-wrap { width: 100%; max-width: 1180px; margin: 0 auto; display: flex; align-items: center; }
-    .logo-box {
-      width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
-      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
-      display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px;
-    }
-    .logo-box img { width: 100%; height: 100%; object-fit: contain; display: block; }
-    .logo-text strong { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; display: block; line-height: 1.1; }
-    .logo-text small  { color: rgba(255,255,255,.45); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; }
-    .nav-menu { display: flex; list-style: none; gap: 2px; margin: 0 auto; padding: 0; }
-    .nav-menu a { display: block; padding: 7px 14px; font-size: .87rem; font-weight: 500; color: rgba(255,255,255,.78); border-radius: 8px; transition: all .2s; }
-    .nav-menu a:hover, .nav-menu a.active { color: #fff; background: rgba(255,255,255,.1); }
-    .btn-masuk {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.22);
-      color: #fff; font-size: .84rem; font-weight: 600;
-      padding: 7px 18px; border-radius: 50px; transition: all .2s;
-    }
-    .btn-masuk:hover { background: rgba(255,255,255,.18); color: #fff; }
-    .user-avatar {
-      width: 30px; height: 30px; border-radius: 50%;
-      background: #c49a2a; color: #fff; font-weight: 700; font-size: .82rem;
-      display: flex; align-items: center; justify-content: center;
-    }
+/* ── NAVBAR ──────────────────────────────────────── */
+.navbar-main {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 68px; padding: 0 28px;
+  display: flex; align-items: center;
+  background: rgba(12,29,58,.96); backdrop-filter: blur(14px);
+  box-shadow: 0 2px 20px rgba(0,0,0,.22);
+}
+.nav-wrap { width: 100%; max-width: 1180px; margin: 0 auto; display: flex; align-items: center; }
+.logo-box {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
+  display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px;
+}
+.logo-box img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.logo-text strong { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; display: block; line-height: 1.1; }
+.logo-text small  { color: rgba(255,255,255,.45); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; }
+.nav-menu { display: flex; list-style: none; gap: 2px; margin: 0 auto; padding: 0; }
+.nav-menu a { display: block; padding: 7px 14px; font-size: .87rem; font-weight: 500; color: rgba(255,255,255,.78); border-radius: 8px; transition: all .2s; }
+.nav-menu a:hover, .nav-menu a.active { color: #fff; background: rgba(255,255,255,.1); }
+.btn-masuk {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.22);
+  color: #fff; font-size: .84rem; font-weight: 600;
+  padding: 7px 18px; border-radius: 50px; transition: all .2s;
+}
+.btn-masuk:hover { background: rgba(255,255,255,.18); color: #fff; }
+.user-avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #c49a2a; color: #fff; font-weight: 700; font-size: .82rem;
+  display: flex; align-items: center; justify-content: center;
+}
 
-    /* ── HERO DETAIL ─── */
-    .hero-detail {
-      padding-top: 68px; /* tinggi navbar */
-      background: #0c1d3a;
-      position: relative; overflow: hidden;
-    }
-    .hero-foto {
-      width: 100%; height: 400px; object-fit: cover; display: block;
-      opacity: .55;
-    }
-    .hero-foto-placeholder {
-      width: 100%; height: 400px;
-      background: linear-gradient(145deg, #0a1628, #0e2d5e);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.2); font-size: 4rem;
-    }
-    .hero-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 0;
-      background: linear-gradient(to top, rgba(10,22,40,.98) 0%, rgba(10,22,40,.6) 60%, transparent 100%);
-    }
-    .hero-overlay .container { max-width: 960px; }
-    .crumb { color: rgba(255,255,255,.5); font-size: .8rem; margin-bottom: 12px; }
-    .crumb a { color: rgba(255,255,255,.7); transition: color .2s; }
-    .crumb a:hover { color: #e8bf60; }
-    .hero-badge-jenis {
-      display: inline-block; padding: 4px 12px; border-radius: 6px;
-      font-size: .72rem; font-weight: 700; margin-bottom: 10px;
-    }
-    .jenis-religi { background: #fff4cc; color: #7a5800; }
-    .jenis-lokal  { background: #d9f5ea; color: #1a6640; }
-    .jenis-manca  { background: #ddeeff; color: #0a3d80; }
-    .hero-overlay h1 {
-      font-family: 'Playfair Display', serif; color: #fff;
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem); line-height: 1.2; margin-bottom: 14px;
-    }
-    .info-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
-      color: rgba(255,255,255,.82); font-size: .78rem; font-weight: 500;
-      padding: 5px 12px; border-radius: 50px; margin-right: 6px; margin-bottom: 6px;
-    }
-    .info-pill i { color: #e8bf60; }
+/* ── HERO DETAIL ─────────────────────────────────── */
+.hero-detail { padding-top: 68px; background: #0c1d3a; position: relative; overflow: hidden; }
+.hero-foto { width: 100%; height: 400px; object-fit: cover; display: block; opacity: .55; }
+.hero-foto-placeholder {
+  width: 100%; height: 400px;
+  background: linear-gradient(145deg, #0a1628, #0e2d5e);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.2); font-size: 4rem;
+}
+.hero-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 0;
+  background: linear-gradient(to top, rgba(10,22,40,.98) 0%, rgba(10,22,40,.6) 60%, transparent 100%);
+}
+.hero-overlay .container { max-width: 960px; }
+.crumb { color: rgba(255,255,255,.5); font-size: .8rem; margin-bottom: 12px; }
+.crumb a { color: rgba(255,255,255,.7); transition: color .2s; }
+.crumb a:hover { color: #e8bf60; }
+.hero-badge-jenis { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: .72rem; font-weight: 700; margin-bottom: 10px; }
+.jenis-religi { background: #fff4cc; color: #7a5800; }
+.jenis-lokal  { background: #d9f5ea; color: #1a6640; }
+.jenis-manca  { background: #ddeeff; color: #0a3d80; }
+.hero-overlay h1 {
+  font-family: 'Playfair Display', serif; color: #fff;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem); line-height: 1.2; margin-bottom: 14px;
+}
+.info-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.82); font-size: .78rem; font-weight: 500;
+  padding: 5px 12px; border-radius: 50px; margin-right: 6px; margin-bottom: 6px;
+}
+.info-pill i { color: #e8bf60; }
 
-    /* ── KONTEN UTAMA ─── */
-    .konten-wrap { background: #f5f2ec; padding: 48px 0 64px; }
-    .konten-wrap .container { max-width: 960px; }
+/* ── KONTEN UTAMA ────────────────────────────────── */
+.konten-wrap { background: #f5f2ec; padding: 48px 0 64px; }
+.konten-wrap .container { max-width: 960px; }
 
-    /* kartu putih pembungkus tiap section */
-    .kartu-section {
-      background: #fff; border: 1px solid #dde3ee; border-radius: 16px;
-      padding: 28px 32px; margin-bottom: 24px;
-    }
-    .kartu-section h2 {
-      font-family: 'Playfair Display', serif; font-size: 1.2rem;
-      color: #0c1d3a; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
-    }
-    .kartu-section h2 i { color: #1e4dbf; font-size: 1.1rem; }
+/* Kartu putih tiap section */
+.kartu-section {
+  background: #fff; border: 1px solid #dde3ee; border-radius: 16px;
+  padding: 28px 32px; margin-bottom: 24px;
+}
+.kartu-section h2 {
+  font-family: 'Playfair Display', serif; font-size: 1.2rem;
+  color: #0c1d3a; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.kartu-section h2 i { color: #1e4dbf; font-size: 1.1rem; }
+.teks-deskripsi { font-size: .92rem; color: #4b5563; line-height: 1.85; }
 
-    /* deskripsi */
-    .teks-deskripsi { font-size: .92rem; color: #4b5563; line-height: 1.85; }
+/* Fasilitas */
+.list-fasilitas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.list-fasilitas li {
+  display: flex; align-items: center; gap: 8px;
+  background: #f0f4ff; border: 1px solid #c9d4ec;
+  padding: 7px 14px; border-radius: 50px;
+  font-size: .82rem; color: #1e4dbf; font-weight: 500;
+}
 
-    /* fasilitas */
-    .list-fasilitas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-    .list-fasilitas li {
-      display: flex; align-items: center; gap: 8px;
-      background: #f0f4ff; border: 1px solid #c9d4ec;
-      padding: 7px 14px; border-radius: 50px;
-      font-size: .82rem; color: #1e4dbf; font-weight: 500;
-    }
-    .list-fasilitas li i { color: #1e4dbf; font-size: .85rem; }
+/* Keunggulan */
+.list-keunggulan { list-style: none; padding: 0; margin: 0; }
+.list-keunggulan li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid #f0f2f8;
+  font-size: .88rem; color: #374151;
+}
+.list-keunggulan li:last-child { border-bottom: none; }
+.list-keunggulan li i { color: #1fa563; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
 
-    /* keunggulan */
-    .list-keunggulan { list-style: none; padding: 0; margin: 0; }
-    .list-keunggulan li {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 10px 0; border-bottom: 1px solid #f0f2f8;
-      font-size: .88rem; color: #374151;
-    }
-    .list-keunggulan li:last-child { border-bottom: none; }
-    .list-keunggulan li i { color: #1fa563; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+/* Syarat & ketentuan — nomor otomatis dengan CSS counter */
+.list-syarat { list-style: none; padding: 0; margin: 0; counter-reset: syarat-counter; }
+.list-syarat li {
+  counter-increment: syarat-counter;
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid #f0f2f8;
+  font-size: .88rem; color: #374151;
+}
+.list-syarat li:last-child { border-bottom: none; }
+.list-syarat li::before {
+  content: counter(syarat-counter);
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #0c1d3a; color: #fff;
+  font-size: .72rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
 
-    /* syarat ketentuan */
-    .list-syarat { list-style: none; padding: 0; margin: 0; counter-reset: syarat-counter; }
-    .list-syarat li {
-      counter-increment: syarat-counter;
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 10px 0; border-bottom: 1px solid #f0f2f8;
-      font-size: .88rem; color: #374151;
-    }
-    .list-syarat li:last-child { border-bottom: none; }
-    .list-syarat li::before {
-      content: counter(syarat-counter);
-      width: 24px; height: 24px; border-radius: 50%;
-      background: #0c1d3a; color: #fff;
-      font-size: .72rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
+/* Itinerary timeline */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: #dde3ee; }
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute; left: -20px; top: 4px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #1e4dbf; color: #fff;
+  font-size: .65rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.timeline-label { font-size: .72rem; font-weight: 700; color: #1e4dbf; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+.timeline-desc { font-size: .87rem; color: #4b5563; line-height: 1.75; }
 
-    /* itinerary */
-    .timeline { position: relative; padding-left: 24px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 11px; top: 0; bottom: 0;
-      width: 2px; background: #dde3ee;
-    }
-    .timeline-item { position: relative; margin-bottom: 20px; }
-    .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-dot {
-      position: absolute; left: -20px; top: 4px;
-      width: 22px; height: 22px; border-radius: 50%;
-      background: #1e4dbf; color: #fff;
-      font-size: .65rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .timeline-label {
-      font-size: .72rem; font-weight: 700; color: #1e4dbf;
-      text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px;
-    }
-    .timeline-desc { font-size: .87rem; color: #4b5563; line-height: 1.75; }
+/* Sidebar harga */
+.sidebar-harga {
+  background: #fff; border: 1px solid #dde3ee; border-radius: 16px;
+  padding: 24px; position: sticky; top: 84px;
+}
+.harga-label-kecil { font-size: .7rem; color: #9baac8; text-transform: uppercase; letter-spacing: .08em; }
+.harga-besar { color: #e8400c; font-size: 1.6rem; font-weight: 800; line-height: 1.1; }
+.harga-satuan { font-size: .75rem; color: #8a9bc0; font-weight: 400; }
+.info-sidebar { font-size: .82rem; color: #4b5563; display: flex; gap: 8px; margin-bottom: 8px; }
+.info-sidebar i { color: #1e4dbf; width: 16px; flex-shrink: 0; }
+.btn-wa-besar {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 13px; border-radius: 12px;
+  background: #1fa563; color: #fff; font-size: .92rem; font-weight: 700;
+  transition: all .2s; margin-top: 16px;
+}
+.btn-wa-besar:hover { background: #18935a; color: #fff; }
+.btn-kembali {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; padding: 10px; border-radius: 12px; margin-top: 8px;
+  background: #f0f4ff; color: #1e4dbf; font-size: .85rem; font-weight: 600;
+  border: 1.5px solid #c9d4ec; transition: all .2s;
+}
+.btn-kembali:hover { background: #1e4dbf; color: #fff; }
 
-    /* sidebar harga & CTA */
-    .sidebar-harga {
-      background: #fff; border: 1px solid #dde3ee; border-radius: 16px;
-      padding: 24px; position: sticky; top: 84px;
-    }
-    .harga-label-kecil { font-size: .7rem; color: #9baac8; text-transform: uppercase; letter-spacing: .08em; }
-    .harga-besar { color: #e8400c; font-size: 1.6rem; font-weight: 800; line-height: 1.1; }
-    .harga-satuan { font-size: .75rem; color: #8a9bc0; font-weight: 400; }
-    .divider-tipis { border-color: #f0f2f8; margin: 16px 0; }
-    .info-sidebar { font-size: .82rem; color: #4b5563; display: flex; gap: 8px; margin-bottom: 8px; }
-    .info-sidebar i { color: #1e4dbf; width: 16px; flex-shrink: 0; }
-    .btn-wa-besar {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; padding: 13px; border-radius: 12px;
-      background: #1fa563; color: #fff; font-size: .92rem; font-weight: 700;
-      transition: all .2s; margin-top: 16px;
-    }
-    .btn-wa-besar:hover { background: #18935a; color: #fff; transform: translateY(-1px); }
-    .btn-kembali {
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-      width: 100%; padding: 10px; border-radius: 12px; margin-top: 8px;
-      background: #f0f4ff; color: #1e4dbf; font-size: .85rem; font-weight: 600;
-      border: 1.5px solid #c9d4ec; transition: all .2s;
-    }
-    .btn-kembali:hover { background: #1e4dbf; color: #fff; }
+/* ── FOOTER ──────────────────────────────────────── */
+footer { background: #0a1628; padding: 60px 0 28px; }
+.foot-inner { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+footer h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.2rem; margin-bottom: 4px; }
+.foot-since { color: rgba(255,255,255,.32); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; display: block; margin-bottom: 12px; }
+.foot-desc  { font-size: .83rem; color: rgba(255,255,255,.46); line-height: 1.75; margin-bottom: 18px; }
+.socials { display: flex; gap: 8px; }
+.socials a { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: .95rem; transition: all .2s; }
+.socials a:hover { background: #1e4dbf; border-color: #1e4dbf; color: #fff; }
+footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.32); margin-bottom: 16px; }
+.foot-link { display: block; font-size: .83rem; color: rgba(255,255,255,.52); margin-bottom: 10px; transition: color .2s; }
+.foot-link:hover { color: #fff; }
+.foot-link i { margin-right: 6px; color: rgba(255,255,255,.3); }
+.foot-copy { font-size: .78rem; color: rgba(255,255,255,.28); }
 
-    /* ── FOOTER (sama persis dengan layanan.blade.php) ─── */
-    footer { background: #0a1628; padding: 60px 0 28px; }
-    .foot-inner { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
-    footer h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.2rem; margin-bottom: 4px; }
-    .foot-since { color: rgba(255,255,255,.32); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; display: block; margin-bottom: 12px; }
-    .foot-desc  { font-size: .83rem; color: rgba(255,255,255,.46); line-height: 1.75; margin-bottom: 18px; }
-    .socials { display: flex; gap: 8px; }
-    .socials a {
-      width: 36px; height: 36px; border-radius: 9px;
-      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.5); font-size: .95rem; transition: all .2s;
-    }
-    .socials a:hover { background: #1e4dbf; border-color: #1e4dbf; color: #fff; }
-    footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.32); margin-bottom: 16px; }
-    .foot-link { display: block; font-size: .83rem; color: rgba(255,255,255,.52); margin-bottom: 10px; transition: color .2s; }
-    .foot-link:hover { color: #fff; }
-    .foot-link i { margin-right: 6px; color: rgba(255,255,255,.3); }
-    .foot-copy { font-size: .78rem; color: rgba(255,255,255,.28); }
-
-    /* ── ANIMASI ─── */
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
-
-    /* ── RESPONSIF ─── */
-    @media (max-width: 991px) {
-      .nav-menu { display: none; }
-      .sidebar-harga { position: static; margin-top: 24px; }
-    }
-    @media (max-width: 575px) {
-      .navbar-main { padding: 0 16px; }
-      .hero-foto, .hero-foto-placeholder { height: 260px; }
-      .kartu-section { padding: 20px; }
-    }
-  </style>
+/* ── RESPONSIF ───────────────────────────────────── */
+@media (max-width: 991px) {
+  .nav-menu { display: none; }
+  .sidebar-harga { position: static; margin-top: 24px; }
+}
+@media (max-width: 575px) {
+  .navbar-main { padding: 0 16px; }
+  .hero-foto, .hero-foto-placeholder { height: 260px; }
+  .kartu-section { padding: 20px; }
+}
+</style>
 </head>
 <body>
 
 {{-- ══ NAVBAR ══ --}}
 <nav class="navbar-main">
   <div class="nav-wrap">
-    <a href="{{ route('beranda') }}" class="d-flex align-items-center gap-2 me-4">
+
+    {{-- Logo — double-klik untuk masuk ke admin (tersembunyi dari pengunjung) --}}
+    <a href="{{ route('beranda') }}" id="logo-link" class="d-flex align-items-center gap-2 me-4">
       <div class="logo-box">
         <img src="{{ asset('img/logo.png') }}" alt="Logo Nirwana Tour & Travel">
       </div>
@@ -282,9 +256,6 @@
           </ul>
         </div>
       @else
-        <a href="{{ route('login') }}" class="btn-masuk">
-          <i class="bi bi-person"></i> Masuk
-        </a>
       @endauth
     </div>
   </div>
@@ -292,33 +263,26 @@
 
 
 {{-- ══ HERO ══
-     $paket->foto   → path foto dari storage (diisi admin)
-     $paket->nama   → nama paket
-     $paket->lokasi, durasi, jenis_wisata → info singkat
---}}
+     Semua data dari $paket (dikirim PageController@dtk)
+     Relasi yang dipakai: fasilitas, keunggulanPaket, syaratKetentuan, itinerary
+══ --}}
 <section class="hero-detail">
 
-  {{-- Foto hero — tampil jika ada, placeholder jika belum diupload --}}
   @if($paket->foto)
     <img src="{{ asset('storage/' . $paket->foto) }}" alt="{{ $paket->nama }}" class="hero-foto">
   @else
-    <div class="hero-foto-placeholder">
-      <i class="bi bi-image"></i>
-    </div>
+    <div class="hero-foto-placeholder"><i class="bi bi-image"></i></div>
   @endif
 
-  {{-- Overlay teks di atas foto --}}
   <div class="hero-overlay">
     <div class="container">
 
-      {{-- Breadcrumb --}}
       <p class="crumb">
         <a href="{{ route('beranda') }}">Beranda</a> &rsaquo;
         <a href="{{ route('lyn') }}">Layanan</a> &rsaquo;
         {{ $paket->nama }}
       </p>
 
-      {{-- Badge jenis wisata --}}
       @php
         $jenisClass = match($paket->jenis_wisata) {
           'Wisata Religi'      => 'jenis-religi',
@@ -329,17 +293,10 @@
       @endphp
       <span class="hero-badge-jenis {{ $jenisClass }}">{{ $paket->jenis_wisata }}</span>
 
-      {{-- Judul paket --}}
       <h1>{{ $paket->nama }}</h1>
-
-      {{-- Info singkat: lokasi & durasi --}}
       <div>
-        <span class="info-pill">
-          <i class="bi bi-geo-alt-fill"></i> {{ $paket->lokasi }}
-        </span>
-        <span class="info-pill">
-          <i class="bi bi-clock-fill"></i> {{ $paket->durasi }}
-        </span>
+        <span class="info-pill"><i class="bi bi-geo-alt-fill"></i> {{ $paket->lokasi }}</span>
+        <span class="info-pill"><i class="bi bi-clock-fill"></i> {{ $paket->durasi }}</span>
       </div>
 
     </div>
@@ -352,20 +309,18 @@
   <div class="container">
     <div class="row g-4">
 
-      {{-- ── Kolom kiri: semua section detail ─── --}}
+      {{-- Kolom kiri: detail lengkap --}}
       <div class="col-lg-8">
 
-        {{-- 1. DESKRIPSI PAKET --}}
+        {{-- 1. Deskripsi --}}
         @if($paket->deskripsi)
           <div class="kartu-section">
             <h2><i class="bi bi-file-text"></i> Tentang Paket Ini</h2>
-            <div class="teks-deskripsi">
-              {!! $paket->deskripsi !!}
-            </div>
+            <div class="teks-deskripsi">{!! $paket->deskripsi !!}</div>
           </div>
         @endif
 
-        {{-- 2. FASILITAS --}}
+        {{-- 2. Fasilitas --}}
         @if($paket->fasilitas->count() > 0)
           <div class="kartu-section">
             <h2><i class="bi bi-check2-circle"></i> Fasilitas Termasuk</h2>
@@ -377,22 +332,19 @@
           </div>
         @endif
 
-        {{-- 3. KEUNGGULAN PAKET --}}
+        {{-- 3. Keunggulan --}}
         @if($paket->keunggulanPaket->count() > 0)
           <div class="kartu-section">
             <h2><i class="bi bi-star"></i> Keunggulan Paket</h2>
             <ul class="list-keunggulan">
               @foreach($paket->keunggulanPaket->sortBy('urutan') as $item)
-                <li>
-                  <i class="bi bi-shield-check"></i>
-                  {{ $item->isi }}
-                </li>
+                <li><i class="bi bi-shield-check"></i> {{ $item->isi }}</li>
               @endforeach
             </ul>
           </div>
         @endif
 
-        {{-- 4. ITINERARY --}}
+        {{-- 4. Itinerary --}}
         @if($paket->itinerary->count() > 0)
           <div class="kartu-section">
             <h2><i class="bi bi-calendar3"></i> Itinerary Perjalanan</h2>
@@ -408,7 +360,7 @@
           </div>
         @endif
 
-        {{-- 5. SYARAT & KETENTUAN --}}
+        {{-- 5. Syarat & Ketentuan --}}
         @if($paket->syaratKetentuan->count() > 0)
           <div class="kartu-section">
             <h2><i class="bi bi-clipboard-check"></i> Syarat &amp; Ketentuan</h2>
@@ -422,8 +374,7 @@
 
       </div>{{-- /col kiri --}}
 
-
-      {{-- ── Kolom kanan: sidebar harga & CTA ─── --}}
+      {{-- Kolom kanan: sidebar harga --}}
       <div class="col-lg-4">
         <div class="sidebar-harga">
 
@@ -433,28 +384,16 @@
             <span class="harga-satuan">/ orang</span>
           </p>
 
-          <hr class="divider-tipis">
+          <hr style="border-color:#f0f2f8;margin:16px 0;">
 
-          <div class="info-sidebar">
-            <i class="bi bi-geo-alt-fill"></i>
-            <span>{{ $paket->lokasi }}</span>
-          </div>
-          <div class="info-sidebar">
-            <i class="bi bi-clock-fill"></i>
-            <span>{{ $paket->durasi }}</span>
-          </div>
-          <div class="info-sidebar">
-            <i class="bi bi-tag-fill"></i>
-            <span>{{ $paket->jenis_wisata }}</span>
-          </div>
+          <div class="info-sidebar"><i class="bi bi-geo-alt-fill"></i> <span>{{ $paket->lokasi }}</span></div>
+          <div class="info-sidebar"><i class="bi bi-clock-fill"></i> <span>{{ $paket->durasi }}</span></div>
+          <div class="info-sidebar"><i class="bi bi-tag-fill"></i> <span>{{ $paket->jenis_wisata }}</span></div>
 
-          {{-- Tombol pesan via WhatsApp --}}
           <a href="https://wa.me/6282324246645?text={{ urlencode('Halo, saya ingin memesan paket ' . $paket->nama) }}"
              target="_blank" rel="noopener noreferrer" class="btn-wa-besar">
             <i class="bi bi-whatsapp"></i> Pesan Sekarang
           </a>
-
-          {{-- Tombol kembali ke daftar layanan --}}
           <a href="{{ route('lyn') }}" class="btn-kembali">
             <i class="bi bi-arrow-left"></i> Kembali ke Layanan
           </a>
@@ -462,7 +401,7 @@
         </div>
       </div>{{-- /col kanan --}}
 
-    </div>{{-- /row --}}
+    </div>
   </div>
 </div>
 
@@ -480,10 +419,10 @@
           dengan layanan profesional dan harga yang transparan.
         </p>
         <div class="socials">
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/6282324246645" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
 
@@ -496,19 +435,12 @@
 
       <div class="col-6 col-md-4">
         <h4>Kontak</h4>
-        <a href="tel:+6282324246645" class="foot-link">
-          <i class="bi bi-telephone"></i>+62 823-2424-6645
-        </a>
-        <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="foot-link">
-          <i class="bi bi-whatsapp"></i>+62 823-2424-6645
-        </a>
-        <a href="mailto:info@nirwanatravel.id" class="foot-link">
-          <i class="bi bi-envelope"></i>info@nirwanatravel.id
-        </a>
+        <a href="tel:+6282324246645" class="foot-link"><i class="bi bi-telephone"></i>+62 823-2424-6645</a>
+        <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="foot-link"><i class="bi bi-whatsapp"></i>+62 823-2424-6645</a>
+        <a href="mailto:info@nirwanatravel.id" class="foot-link"><i class="bi bi-envelope"></i>info@nirwanatravel.id</a>
       </div>
 
     </div>
-
     <hr style="border-color:rgba(255,255,255,.07);margin:44px 0 22px;">
     <div class="d-flex flex-wrap justify-content-between gap-2">
       <p class="foot-copy mb-0">&copy; {{ date('Y') }} Nirwana Tour &amp; Travel. Hak cipta dilindungi.</p>
@@ -517,6 +449,14 @@
   </div>
 </footer>
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ── Double-klik logo → masuk admin (tersembunyi) ──────────
+  document.getElementById('logo-link').addEventListener('dblclick', function (e) {
+    e.preventDefault();
+    window.location.href = '/admin';
+  });
+</script>
 </body>
 </html>
