@@ -2,28 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\JenisLayanan;
 
 class PageController extends Controller
 {
-    // Untuk Route::get('/', ...)
-    public function beranda() {
+    public function beranda()
+    {
         return view('beranda');
     }
 
-    // Untuk Route::get('/tentangkami', ...)
-    public function tk() {
+    public function tk()
+    {
         return view('tentangkami');
     }
 
-    // Untuk Route::get('/layanan', ...)
-    public function lyn() {
-        return view('layanan');
+    public function lyn()
+    {
+        $paket = JenisLayanan::latest()->get();
+
+        return view('layanan', compact('paket'));
     }
 
-    // Untuk Route::get('/layanan/{id}', ...)
-    public function dtk($id) {
-        // Nanti di sini logikanya ambil data paket berdasarkan $id
-        return view('detailtk', ['id' => $id]);
+    public function dtk($id)
+    {
+        $paket = JenisLayanan::with([
+            'syaratKetentuan',
+            'fasilitas',
+            'keunggulanPaket',
+            'itinerary',
+        ])->findOrFail($id);
+
+        return view('detailtk', compact('paket'));
     }
 }

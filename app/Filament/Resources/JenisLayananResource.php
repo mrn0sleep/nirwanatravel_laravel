@@ -2,25 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Tables;
 use App\Filament\Resources\JenisLayananResource\Pages;
 use App\Models\JenisLayanan;
+use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Repeater;
 use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
+use Illuminate\Support\Facades\Storage;
 
 class JenisLayananResource extends Resource
 {
     protected static ?string $model = JenisLayanan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     protected static ?string $navigationLabel = 'Jenis Layanan';
 
@@ -28,151 +23,271 @@ class JenisLayananResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Jenis Layanan';
 
+    protected static ?string $navigationGroup = 'Manajemen Layanan';
+
+    protected static ?int $navigationSort = 1;
+
+    // ----------------------------------------------------------------
+    // FORM
+    // ----------------------------------------------------------------
     public static function form(Form $form): Form
     {
         return $form->schema([
 
-            TextInput::make('nama')
-                ->label('Nama paket')
-                ->unique(ignoreRecord: true)
-                ->required(),
-
-            Textarea::make('p_singkat')
-                ->label('Penjelasan singkat')
-                ->rows(3)
-                ->required(),
-
-            Textarea::make('deskripsi')
-                ->label('Deskripsi lengkap')
-                ->rows(5)
-                ->nullable()
-                ->columnSpanFull(),
-
-            Select::make('jenis_wisata')
-                ->label('Jenis wisata')
-                ->options([
-                    'Wisata Religi'      => 'Wisata Religi',
-                    'Wisata Lokal'       => 'Wisata Lokal',
-                    'Wisata Mancanegara' => 'Wisata Mancanegara',
-                ])
-                ->required(),
-
-            TextInput::make('harga')
-                ->label('Harga')
-                ->numeric()
-                ->prefix('Rp')
-                ->required(),
-
-            TextInput::make('durasi')
-                ->label('Durasi')
-                ->required(),
-
-            TextInput::make('lokasi')
-                ->label('Lokasi')
-                ->required(),
-
-            FileUpload::make('foto')
-                ->label('Foto')
-                ->image()
-                ->directory('foto-paket')
-                ->nullable()
-                ->columnSpanFull(),
-
-            Repeater::make('syaratKetentuan')
-                ->label('Syarat & Ketentuan')
-                ->relationship()
+            Forms\Components\Section::make('Informasi Paket')
+                ->description('Isi data pokok paket wisata.')
                 ->schema([
-                    TextInput::make('isi')
-                        ->label('Poin syarat')
-                        ->required(),
-                    TextInput::make('urutan')
-                        ->label('Urutan')
-                        ->numeric()
-                        ->default(null),
-                ])
-                ->orderColumn('urutan')
-                ->addActionLabel('+ Tambah poin')
-                ->collapsible()
-                ->columnSpanFull(),
 
-            Repeater::make('fasilitas')
-                ->label('Fasilitas')
-                ->relationship()
+                    Forms\Components\TextInput::make('nama')
+                        ->label('Nama Paket')
+                        ->placeholder('Contoh: Paket Umroh Ekonomi 9 Hari')
+                        ->required()
+                        ->unique(ignoreRecord: true)
+                        ->maxLength(255)
+                        ->columnSpanFull(),
+
+                    Forms\Components\Select::make('jenis_wisata')
+                        ->label('Jenis Wisata')
+                        ->options([
+                            'Wisata Religi'      => 'Wisata Religi',
+                            'Wisata Lokal'       => 'Wisata Lokal',
+                            'Wisata Mancanegara' => 'Wisata Mancanegara',
+                        ])
+                        ->required()
+                        ->native(false),
+
+                    Forms\Components\TextInput::make('lokasi')
+                        ->label('Lokasi')
+                        ->placeholder('Contoh: Makkah, Bali, Malaysia')
+                        ->required()
+                        ->maxLength(100),
+
+                    Forms\Components\TextInput::make('durasi')
+                        ->label('Durasi')
+                        ->placeholder('Contoh: 9 hari, 4D3N')
+                        ->required()
+                        ->maxLength(50),
+
+                    Forms\Components\TextInput::make('harga')
+                        ->label('Harga (Rp)')
+                        ->placeholder('Contoh: 22500000')
+                        ->required()
+                        ->numeric()
+                        ->prefix('Rp')
+                        ->minValue(0),
+
+                ])
+                ->columns(2),
+
+            Forms\Components\Section::make('Deskripsi')
                 ->schema([
-                    TextInput::make('nama')
-                        ->label('Nama fasilitas')
-                        ->required(),
-                    TextInput::make('urutan')
-                        ->label('Urutan')
-                        ->numeric()
-                        ->default(null),
-                ])
-                ->orderColumn('urutan')
-                ->addActionLabel('+ Tambah fasilitas')
-                ->collapsible()
-                ->columnSpanFull(),
 
-            Repeater::make('keunggulanPaket')
-                ->label('Keunggulan Paket')
-                ->relationship()
+                    Forms\Components\Textarea::make('p_singkat')
+                        ->label('Paragraf Singkat')
+                        ->placeholder('Ringkasan paket, tampil di kartu layanan.')
+                        ->required()
+                        ->rows(3)
+                        ->maxLength(500)
+                        ->columnSpanFull(),
+
+                    Forms\Components\RichEditor::make('deskripsi')
+                        ->label('Deskripsi Lengkap')
+                        ->toolbarButtons([
+                            'bold', 'italic', 'underline',
+                            'bulletList', 'orderedList',
+                            'h2', 'h3',
+                            'link',
+                        ])
+                        ->columnSpanFull(),
+
+                ]),
+
+            Forms\Components\Section::make('Foto Paket')
                 ->schema([
-                    TextInput::make('isi')
-                        ->label('Poin keunggulan')
-                        ->required(),
-                    TextInput::make('urutan')
-                        ->label('Urutan')
-                        ->numeric()
-                        ->default(null),
-                ])
-                ->orderColumn('urutan')
-                ->addActionLabel('+ Tambah keunggulan')
-                ->collapsible()
-                ->columnSpanFull(),
 
-            Repeater::make('itinerary')->label('Itinerary')->relationship()->schema([
-            TextInput::make('hari')->label('Hari ke-')->numeric()->required(),
-            Textarea::make('deskripsi')->label('Deskripsi')->rows(3)->required(),])
-            ->orderColumn('hari')
-            ->addActionLabel('+ Tambah hari')
-            ->collapsible()
-            ->columnSpanFull(),
+                    Forms\Components\FileUpload::make('foto')
+                        ->label('Upload Foto')
+                        ->image()
+                        ->disk('public')
+                        ->directory('paket')
+                        ->imageResizeMode('cover')
+                        ->imageCropAspectRatio('16:9')
+                        ->imageResizeTargetWidth('800')
+                        ->imageResizeTargetHeight('450')
+                        ->maxSize(2048)
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                        ->helperText('Format: JPG, PNG, atau WebP. Maks 2 MB. Rasio ideal 16:9.')
+                        ->columnSpanFull()
+                        ->deleteUploadedFileUsing(function ($file) {
+                            Storage::disk('public')->delete($file);
+                        }),
+
+                ]),
+
+            // ── Relasi Repeater ─────────────────────────────────────
+
+            Forms\Components\Section::make('Syarat & Ketentuan')
+                ->schema([
+                    Forms\Components\Repeater::make('syaratKetentuan')
+                        ->label('')
+                        ->relationship()
+                        ->schema([
+                            Forms\Components\TextInput::make('isi')
+                                ->label('Poin syarat')
+                                ->required(),
+                            Forms\Components\TextInput::make('urutan')
+                                ->label('Urutan')
+                                ->numeric()
+                                ->default(null),
+                        ])
+                        ->orderColumn('urutan')
+                        ->addActionLabel('+ Tambah poin')
+                        ->collapsible()
+                        ->columnSpanFull(),
+                ]),
+
+            Forms\Components\Section::make('Fasilitas')
+                ->schema([
+                    Forms\Components\Repeater::make('fasilitas')
+                        ->label('')
+                        ->relationship()
+                        ->schema([
+                            Forms\Components\TextInput::make('nama')
+                                ->label('Nama fasilitas')
+                                ->required(),
+                            Forms\Components\TextInput::make('urutan')
+                                ->label('Urutan')
+                                ->numeric()
+                                ->default(null),
+                        ])
+                        ->orderColumn('urutan')
+                        ->addActionLabel('+ Tambah fasilitas')
+                        ->collapsible()
+                        ->columnSpanFull(),
+                ]),
+
+            Forms\Components\Section::make('Keunggulan Paket')
+                ->schema([
+                    Forms\Components\Repeater::make('keunggulanPaket')
+                        ->label('')
+                        ->relationship()
+                        ->schema([
+                            Forms\Components\TextInput::make('isi')
+                                ->label('Poin keunggulan')
+                                ->required(),
+                            Forms\Components\TextInput::make('urutan')
+                                ->label('Urutan')
+                                ->numeric()
+                                ->default(null),
+                        ])
+                        ->orderColumn('urutan')
+                        ->addActionLabel('+ Tambah keunggulan')
+                        ->collapsible()
+                        ->columnSpanFull(),
+                ]),
+
+            Forms\Components\Section::make('Itinerary')
+                ->schema([
+                    Forms\Components\Repeater::make('itinerary')
+                        ->label('')
+                        ->relationship()
+                        ->schema([
+                            Forms\Components\TextInput::make('hari')
+                                ->label('Hari ke-')
+                                ->numeric()
+                                ->required(),
+                            Forms\Components\Textarea::make('deskripsi')
+                                ->label('Deskripsi')
+                                ->rows(3)
+                                ->required(),
+                        ])
+                        ->orderColumn('hari')
+                        ->addActionLabel('+ Tambah hari')
+                        ->collapsible()
+                        ->columnSpanFull(),
+                ]),
 
         ]);
     }
 
+    // ----------------------------------------------------------------
+    // TABLE
+    // ----------------------------------------------------------------
     public static function table(Table $table): Table
     {
-        return $table->columns([
+        return $table
+            ->columns([
 
-            ImageColumn::make('foto')
-                ->label('Foto')
-                ->circular(),
+                Tables\Columns\ImageColumn::make('foto')
+                    ->label('Foto')
+                    ->disk('public')
+                    ->height(56)
+                    ->width(80)
+                    ->defaultImageUrl(asset('img/no-image.png'))
+                    ->extraImgAttributes(['style' => 'object-fit:cover;border-radius:6px;']),
 
-            TextColumn::make('nama')
-                ->label('Nama paket')
-                ->searchable(),
+                Tables\Columns\TextColumn::make('nama')
+                    ->label('Nama Paket')
+                    ->searchable()
+                    ->sortable()
+                    ->weight('bold'),
 
-            TextColumn::make('jenis_wisata')
-                ->label('Jenis wisata')
-                ->badge(),
+                Tables\Columns\BadgeColumn::make('jenis_wisata')
+                    ->label('Jenis')
+                    ->colors([
+                        'warning' => 'Wisata Religi',
+                        'success' => 'Wisata Lokal',
+                        'info'    => 'Wisata Mancanegara',
+                    ]),
 
-            TextColumn::make('harga')
-                ->label('Harga')
-                ->money('IDR'),
+                Tables\Columns\TextColumn::make('lokasi')
+                    ->label('Lokasi')
+                    ->icon('heroicon-m-map-pin')
+                    ->searchable(),
 
-            TextColumn::make('durasi')
-                ->label('Durasi'),
+                Tables\Columns\TextColumn::make('durasi')
+                    ->label('Durasi'),
 
-            TextColumn::make('lokasi')
-                ->label('Lokasi'),
+                Tables\Columns\TextColumn::make('harga')
+                    ->label('Harga')
+                    ->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.'))
+                    ->sortable(),
 
-        ])
-        ->actions([
-            Tables\Actions\EditAction::make()->label('Edit'),
-            Tables\Actions\DeleteAction::make()->label('Hapus'),
-        ]);
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat')
+                    ->dateTime('d M Y')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+
+            ])
+
+            ->defaultSort('created_at', 'desc')
+
+            ->filters([
+                Tables\Filters\SelectFilter::make('jenis_wisata')
+                    ->label('Filter Jenis Wisata')
+                    ->options([
+                        'Wisata Religi'      => 'Wisata Religi',
+                        'Wisata Lokal'       => 'Wisata Lokal',
+                        'Wisata Mancanegara' => 'Wisata Mancanegara',
+                    ]),
+            ])
+
+            ->actions([
+                Tables\Actions\EditAction::make()->label('Edit'),
+                Tables\Actions\DeleteAction::make()->label('Hapus'),
+            ])
+
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make()->label('Hapus yang dipilih'),
+                ]),
+            ]);
     }
 
+    // ----------------------------------------------------------------
+    // PAGES
+    // ----------------------------------------------------------------
     public static function getPages(): array
     {
         return [

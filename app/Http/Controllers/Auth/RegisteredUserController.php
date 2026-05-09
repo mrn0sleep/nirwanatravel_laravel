@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\RateLimiter;
 
 class RegisteredUserController extends Controller
 {
@@ -30,6 +31,18 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Honeypot check
+        if ($request->filled('website')) {
+        return redirect(route('register'));
+        }
+
+        $key = 'register:' . $request->ip();
+        if (RateLimiter::tooManyAttempts($key, 3)) {
+        return back()->withErrors(['email' => 'Terlalu banyak percobaan. Coba lagi dalam 1 menit.']);
+        }
+        RateLimiter::hit($key, 60);
+
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
