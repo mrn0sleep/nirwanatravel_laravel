@@ -10,13 +10,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
 <style>
-/* ── RESET ───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; color: #111827; background: #fff; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; color: #111827; background: #f5f2ec; }
 a { text-decoration: none; }
 
-/* ── NAVBAR ──────────────────────────────────────── */
+/* NAVBAR */
 .navbar-main {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
   height: 68px; padding: 0 28px;
@@ -38,178 +37,216 @@ a { text-decoration: none; }
 .nav-menu { display: flex; list-style: none; gap: 2px; margin: 0 auto; }
 .nav-menu a { display: block; padding: 7px 13px; font-size: .87rem; font-weight: 500; color: rgba(255,255,255,.8); border-radius: 8px; transition: .2s; }
 .nav-menu a:hover, .nav-menu a.active { color: #fff; background: rgba(255,255,255,.1); }
-.btn-masuk {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.22);
-  color: #fff; font-size: .84rem; font-weight: 600;
-  padding: 7px 18px; border-radius: 50px; transition: all .2s;
-}
-.btn-masuk:hover { background: rgba(255,255,255,.18); color: #fff; }
 .user-avatar {
   width: 30px; height: 30px; border-radius: 50%;
   background: #c49a2a; color: #fff; font-weight: 700; font-size: .82rem;
   display: flex; align-items: center; justify-content: center;
 }
 
-/* ── HERO DETAIL ─────────────────────────────────── */
-.hero-detail { padding-top: 68px; background: #0c1d3a; position: relative; overflow: hidden; }
-.hero-foto { width: 100%; height: 400px; object-fit: cover; display: block; opacity: .55; }
-.hero-foto-placeholder {
-  width: 100%; height: 400px;
+/* BURGER */
+.burger-btn {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.18);
+  color: #fff; font-size: 1.25rem;
+  cursor: pointer; margin-left: auto;
+  transition: background .2s;
+}
+.burger-btn:hover { background: rgba(255,255,255,.2); }
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none;
+  position: fixed; top: 68px; left: 0; right: 0;
+  background: #0c1d3a;
+  border-top: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  z-index: 998; padding: 12px 0 20px;
+}
+.mobile-menu.buka { display: block; }
+.mobile-menu a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 24px; font-size: .93rem; font-weight: 500;
+  color: rgba(255,255,255,.78);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: background .2s, color .2s;
+}
+.mobile-menu a:hover, .mobile-menu a.active { background: rgba(255,255,255,.07); color: #fff; }
+.mobile-menu a i { font-size: 1rem; color: #e8bf60; width: 20px; }
+.mobile-menu .wa-mobile {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: 16px 24px 0;
+  background: #1fa563; color: #fff; font-weight: 600; font-size: .88rem;
+  padding: 11px; border-radius: 50px;
+}
+.mobile-menu .wa-mobile:hover { background: #22bd72; color: #fff; }
+
+/* WRAPPER UTAMA */
+.halaman { padding-top: 68px; padding-bottom: 80px; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 28px 16px 0; }
+
+/* HEADER PAKET */
+.header-paket { background: #fff; border-radius: 16px; overflow: hidden; margin-bottom: 12px; }
+.header-foto { width: 100%; height: 220px; object-fit: cover; display: block; }
+.header-foto-placeholder {
+  width: 100%; height: 220px;
   background: linear-gradient(145deg, #0a1628, #0e2d5e);
   display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,.2); font-size: 4rem;
+  color: rgba(255,255,255,.2); font-size: 3rem;
 }
-.hero-overlay {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 0;
-  background: linear-gradient(to top, rgba(10,22,40,.98) 0%, rgba(10,22,40,.6) 60%, transparent 100%);
-}
-.hero-overlay .container { max-width: 960px; }
-.crumb { color: rgba(255,255,255,.5); font-size: .8rem; margin-bottom: 12px; }
-.crumb a { color: rgba(255,255,255,.7); transition: color .2s; }
-.crumb a:hover { color: #e8bf60; }
-.hero-badge-jenis { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: .72rem; font-weight: 700; margin-bottom: 10px; }
+.header-info { padding: 20px 20px 16px; }
+.crumb { font-size: .75rem; color: #9baac8; margin-bottom: 10px; }
+.crumb a { color: #6b7a90; }
+.crumb a:hover { color: #0c1d3a; }
+
+/* Badge jenis */
+.badge-jenis { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: .7rem; font-weight: 700; margin-bottom: 8px; }
 .jenis-religi { background: #fff4cc; color: #7a5800; }
 .jenis-lokal  { background: #d9f5ea; color: #1a6640; }
 .jenis-manca  { background: #ddeeff; color: #0a3d80; }
-.hero-overlay h1 {
-  font-family: 'Playfair Display', serif; color: #fff;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem); line-height: 1.2; margin-bottom: 14px;
-}
-.info-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
-  color: rgba(255,255,255,.82); font-size: .78rem; font-weight: 500;
-  padding: 5px 12px; border-radius: 50px; margin-right: 6px; margin-bottom: 6px;
-}
-.info-pill i { color: #e8bf60; }
 
-/* ── KONTEN UTAMA ────────────────────────────────── */
-.konten-wrap { background: #f5f2ec; padding: 48px 0 64px; }
-.konten-wrap .container { max-width: 960px; }
+.nama-paket { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #0c1d3a; font-weight: 700; margin-bottom: 10px; line-height: 1.25; }
 
-/* Kartu putih tiap section */
-.kartu-section {
-  background: #fff; border: 1px solid #dde3ee; border-radius: 16px;
-  padding: 28px 32px; margin-bottom: 24px;
-}
-.kartu-section h2 {
-  font-family: 'Playfair Display', serif; font-size: 1.2rem;
-  color: #0c1d3a; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
-}
-.kartu-section h2 i { color: #1e4dbf; font-size: 1.1rem; }
-.teks-deskripsi { font-size: .92rem; color: #4b5563; line-height: 1.85; }
-
-/* Fasilitas */
-.list-fasilitas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.list-fasilitas li {
-  display: flex; align-items: center; gap: 8px;
+/* Pills info */
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 5px;
   background: #f0f4ff; border: 1px solid #c9d4ec;
-  padding: 7px 14px; border-radius: 50px;
-  font-size: .82rem; color: #1e4dbf; font-weight: 500;
+  color: #1e4dbf; font-size: .75rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 50px;
 }
+.pill i { font-size: .78rem; }
+
+.deskripsi-singkat { font-size: .88rem; color: #6b7a90; line-height: 1.75; }
+
+/* SEKSI KONTEN */
+.seksi {
+  background: #fff; border-radius: 14px;
+  padding: 18px 20px; margin-bottom: 12px;
+}
+.seksi-judul {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .88rem; font-weight: 700; color: #0c1d3a;
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 1px solid #f0f2f8;
+}
+.seksi-judul i { color: #1e4dbf; font-size: .95rem; }
+
+/* Deskripsi lengkap */
+.teks-deskripsi { font-size: .87rem; color: #4b5563; line-height: 1.85; }
 
 /* Keunggulan */
 .list-keunggulan { list-style: none; padding: 0; margin: 0; }
 .list-keunggulan li {
-  display: flex; align-items: flex-start; gap: 10px;
-  padding: 10px 0; border-bottom: 1px solid #f0f2f8;
-  font-size: .88rem; color: #374151;
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: .85rem; color: #374151; line-height: 1.6;
+  padding: 7px 0; border-bottom: 1px solid #f5f5f5;
 }
-.list-keunggulan li:last-child { border-bottom: none; }
-.list-keunggulan li i { color: #1fa563; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+.list-keunggulan li:last-child { border-bottom: none; padding-bottom: 0; }
+.list-keunggulan li i { color: #1fa563; margin-top: 2px; flex-shrink: 0; }
 
-/* Syarat & ketentuan — nomor otomatis dengan CSS counter */
-.list-syarat { list-style: none; padding: 0; margin: 0; counter-reset: syarat-counter; }
+/* Fasilitas */
+.list-fasilitas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.list-fasilitas li {
+  display: flex; align-items: center; gap: 6px;
+  background: #f0f4ff; border: 1px solid #c9d4ec;
+  padding: 5px 12px; border-radius: 50px;
+  font-size: .8rem; color: #1e4dbf; font-weight: 500;
+}
+
+/* Syarat — CSS counter */
+.list-syarat { list-style: none; padding: 0; margin: 0; counter-reset: no; }
 .list-syarat li {
-  counter-increment: syarat-counter;
-  display: flex; align-items: flex-start; gap: 12px;
-  padding: 10px 0; border-bottom: 1px solid #f0f2f8;
-  font-size: .88rem; color: #374151;
+  counter-increment: no;
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: .85rem; color: #374151; line-height: 1.6;
+  padding: 8px 0; border-bottom: 1px solid #f5f5f5;
 }
 .list-syarat li:last-child { border-bottom: none; }
 .list-syarat li::before {
-  content: counter(syarat-counter);
-  width: 24px; height: 24px; border-radius: 50%;
+  content: counter(no);
+  min-width: 22px; height: 22px; border-radius: 50%;
   background: #0c1d3a; color: #fff;
-  font-size: .72rem; font-weight: 700;
+  font-size: .68rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 
-/* Itinerary timeline */
-.timeline { position: relative; padding-left: 24px; }
-.timeline::before { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: #dde3ee; }
-.timeline-item { position: relative; margin-bottom: 20px; }
+/* Itinerary */
+.timeline { position: relative; padding-left: 22px; }
+.timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #e4e9f5; }
+.timeline-item { position: relative; margin-bottom: 18px; }
 .timeline-item:last-child { margin-bottom: 0; }
 .timeline-dot {
-  position: absolute; left: -20px; top: 4px;
-  width: 22px; height: 22px; border-radius: 50%;
+  position: absolute; left: -18px; top: 3px;
+  width: 20px; height: 20px; border-radius: 50%;
   background: #1e4dbf; color: #fff;
-  font-size: .65rem; font-weight: 700;
+  font-size: .62rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
-.timeline-label { font-size: .72rem; font-weight: 700; color: #1e4dbf; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
-.timeline-desc { font-size: .87rem; color: #4b5563; line-height: 1.75; }
+.timeline-label { font-size: .7rem; font-weight: 700; color: #1e4dbf; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 3px; }
+.timeline-desc  { font-size: .85rem; color: #4b5563; line-height: 1.7; }
 
-/* Sidebar harga */
-.sidebar-harga {
-  background: #fff; border: 1px solid #dde3ee; border-radius: 16px;
-  padding: 24px; position: sticky; top: 84px;
+/* STICKY BOTTOM BAR */
+.bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 990;
+  background: #fff; border-top: 1px solid #dde3ee;
+  padding: 12px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
-.harga-label-kecil { font-size: .7rem; color: #9baac8; text-transform: uppercase; letter-spacing: .08em; }
-.harga-besar { color: #e8400c; font-size: 1.6rem; font-weight: 800; line-height: 1.1; }
-.harga-satuan { font-size: .75rem; color: #8a9bc0; font-weight: 400; }
-.info-sidebar { font-size: .82rem; color: #4b5563; display: flex; gap: 8px; margin-bottom: 8px; }
-.info-sidebar i { color: #1e4dbf; width: 16px; flex-shrink: 0; }
-.btn-wa-besar {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  width: 100%; padding: 13px; border-radius: 12px;
-  background: #1fa563; color: #fff; font-size: .92rem; font-weight: 700;
-  transition: all .2s; margin-top: 16px;
+.bottom-harga { flex: 1; }
+.bottom-harga small { display: block; font-size: .65rem; color: #9baac8; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 1px; }
+.bottom-harga strong { font-size: 1.25rem; font-weight: 800; color: #e8400c; }
+.bottom-harga span { font-size: .72rem; color: #8a9bc0; font-weight: 400; }
+.btn-pesan {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #1fa563; color: #fff; font-weight: 700; font-size: .88rem;
+  padding: 12px 22px; border-radius: 12px; transition: background .2s;
+  white-space: nowrap;
 }
-.btn-wa-besar:hover { background: #18935a; color: #fff; }
-.btn-kembali {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  width: 100%; padding: 10px; border-radius: 12px; margin-top: 8px;
-  background: #f0f4ff; color: #1e4dbf; font-size: .85rem; font-weight: 600;
-  border: 1.5px solid #c9d4ec; transition: all .2s;
+.btn-pesan:hover { background: #18935a; color: #fff; }
+.btn-kembali-top {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #6b7a90; font-size: .82rem; font-weight: 500;
+  margin-top: 4px; transition: color .2s;
 }
-.btn-kembali:hover { background: #1e4dbf; color: #fff; }
+.btn-kembali-top:hover { color: #0c1d3a; }
 
-/* ── FOOTER ──────────────────────────────────────── */
-footer { background: #0a1628; padding: 60px 0 28px; }
+/* FOOTER */
+footer { background: #0a1628; padding: 52px 0 24px; }
 .foot-inner { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
-footer h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.2rem; margin-bottom: 4px; }
-.foot-since { color: rgba(255,255,255,.32); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; display: block; margin-bottom: 12px; }
-.foot-desc  { font-size: .83rem; color: rgba(255,255,255,.46); line-height: 1.75; margin-bottom: 18px; }
+footer h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.1rem; margin-bottom: 4px; }
+.foot-since { color: rgba(255,255,255,.32); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; display: block; margin-bottom: 10px; }
+.foot-desc  { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.75; margin-bottom: 16px; }
 .socials { display: flex; gap: 8px; }
-.socials a { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: .95rem; transition: all .2s; }
+.socials a { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: .9rem; transition: all .2s; }
 .socials a:hover { background: #1e4dbf; border-color: #1e4dbf; color: #fff; }
-footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.32); margin-bottom: 16px; }
-.foot-link { display: block; font-size: .83rem; color: rgba(255,255,255,.52); margin-bottom: 10px; transition: color .2s; }
+footer h4 { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 14px; }
+.foot-link { display: block; font-size: .82rem; color: rgba(255,255,255,.5); margin-bottom: 9px; transition: color .2s; }
 .foot-link:hover { color: #fff; }
 .foot-link i { margin-right: 6px; color: rgba(255,255,255,.3); }
-.foot-copy { font-size: .78rem; color: rgba(255,255,255,.28); }
+.foot-copy { font-size: .75rem; color: rgba(255,255,255,.25); }
 
-/* ── RESPONSIF ───────────────────────────────────── */
+/* RESPONSIF */
 @media (max-width: 991px) {
   .nav-menu { display: none; }
-  .sidebar-harga { position: static; margin-top: 24px; }
+  .auth-desktop { display: none; }
+  .burger-btn { display: flex; }
 }
 @media (max-width: 575px) {
   .navbar-main { padding: 0 16px; }
-  .hero-foto, .hero-foto-placeholder { height: 260px; }
-  .kartu-section { padding: 20px; }
+  .header-foto, .header-foto-placeholder { height: 180px; }
+  .nama-paket { font-size: 1.25rem; }
+  .bottom-bar { padding: 10px 16px; }
 }
 </style>
 </head>
 <body>
 
-{{-- ══ NAVBAR ══ --}}
+{{-- NAVBAR --}}
 <nav class="navbar-main">
   <div class="nav-wrap">
 
-    {{-- Logo — double-klik untuk masuk ke admin (tersembunyi dari pengunjung) --}}
     <a href="{{ route('beranda') }}" id="logo-link" class="d-flex align-items-center gap-2 me-4">
       <div class="logo-box">
         <img src="{{ asset('img/logo.png') }}" alt="Logo Nirwana Tour & Travel">
@@ -226,7 +263,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       <li><a href="{{ route('tk') }}">Tentang Kami</a></li>
     </ul>
 
-    <div class="ms-auto">
+    <div class="ms-auto auth-desktop">
       @auth
         <div class="dropdown">
           <button class="btn btn-sm d-flex align-items-center gap-2 rounded-pill text-white"
@@ -257,159 +294,150 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
             </li>
           </ul>
         </div>
-      @else
       @endauth
     </div>
+
+    <button class="burger-btn" id="burgerBtn" aria-label="Buka menu">
+      <i class="bi bi-list" id="burgerIcon"></i>
+    </button>
+
   </div>
 </nav>
 
-
-{{-- ══ HERO ══
-     Semua data dari $paket (dikirim PageController@dtk)
-     Relasi yang dipakai: fasilitas, keunggulanPaket, syaratKetentuan, itinerary
-══ --}}
-<section class="hero-detail">
-
-  @if($paket->foto)
-    <img src="{{ asset('storage/' . $paket->foto) }}" alt="{{ $paket->nama }}" class="hero-foto">
-  @else
-    <div class="hero-foto-placeholder"><i class="bi bi-image"></i></div>
-  @endif
-
-  <div class="hero-overlay">
-    <div class="container">
-
-      <p class="crumb">
-        <a href="{{ route('beranda') }}">Beranda</a> &rsaquo;
-        <a href="{{ route('lyn') }}">Layanan</a> &rsaquo;
-        {{ $paket->nama }}
-      </p>
-
-      @php
-        $jenisClass = match($paket->jenis_wisata) {
-          'Wisata Religi'      => 'jenis-religi',
-          'Wisata Lokal'       => 'jenis-lokal',
-          'Wisata Mancanegara' => 'jenis-manca',
-          default              => 'jenis-lokal',
-        };
-      @endphp
-      <span class="hero-badge-jenis {{ $jenisClass }}">{{ $paket->jenis_wisata }}</span>
-
-      <h1>{{ $paket->nama }}</h1>
-      <div>
-        <span class="info-pill"><i class="bi bi-geo-alt-fill"></i> {{ $paket->lokasi }}</span>
-        <span class="info-pill"><i class="bi bi-clock-fill"></i> {{ $paket->durasi }}</span>
-      </div>
-
-    </div>
-  </div>
-</section>
+{{-- MOBILE MENU --}}
+<div class="mobile-menu" id="mobileMenu">
+  <a href="{{ route('beranda') }}"><i class="bi bi-house-fill"></i> Beranda</a>
+  <a href="{{ route('lyn') }}" class="active"><i class="bi bi-compass-fill"></i> Layanan</a>
+  <a href="{{ route('tk') }}"><i class="bi bi-building"></i> Tentang Kami</a>
+  @auth
+    <a href="{{ route('profile.edit') }}"><i class="bi bi-person-circle"></i> Profil Saya</a>
+    <form method="POST" action="{{ route('logout') }}" style="padding:0 24px;margin-top:4px;">
+      @csrf
+      <button type="submit" style="width:100%;padding:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:rgba(255,100,100,.85);font-size:.88rem;font-weight:600;cursor:pointer;">
+        <i class="bi bi-box-arrow-right"></i> Keluar
+      </button>
+    </form>
+  @endauth
+  <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="wa-mobile">
+    <i class="bi bi-whatsapp"></i> Hubungi Kami via WhatsApp
+  </a>
+</div>
 
 
-{{-- ══ KONTEN UTAMA ══ --}}
-<div class="konten-wrap">
-  <div class="container">
-    <div class="row g-4">
+{{-- KONTEN --}}
+<div class="halaman">
+  <div class="wrap">
 
-      {{-- Kolom kiri: detail lengkap --}}
-      <div class="col-lg-8">
+    {{-- Header paket --}}
+    <div class="header-paket">
 
-        {{-- 1. Deskripsi --}}
-        @if($paket->deskripsi)
-          <div class="kartu-section">
-            <h2><i class="bi bi-file-text"></i> Tentang Paket Ini</h2>
-            <div class="teks-deskripsi">{!! $paket->deskripsi !!}</div>
-          </div>
-        @endif
+      @if($paket->foto)
+        <img src="{{ asset('storage/' . $paket->foto) }}" alt="{{ $paket->nama }}" class="header-foto">
+      @else
+        <div class="header-foto-placeholder"><i class="bi bi-image"></i></div>
+      @endif
 
-        {{-- 2. Fasilitas --}}
-        @if($paket->fasilitas->count() > 0)
-          <div class="kartu-section">
-            <h2><i class="bi bi-check2-circle"></i> Fasilitas Termasuk</h2>
-            <ul class="list-fasilitas">
-              @foreach($paket->fasilitas->sortBy('urutan') as $item)
-                <li><i class="bi bi-check-lg"></i> {{ $item->nama }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
+      <div class="header-info">
+        <p class="crumb">
+          <a href="{{ route('beranda') }}">Beranda</a> /
+          <a href="{{ route('lyn') }}">Layanan</a> /
+          {{ $paket->nama }}
+        </p>
 
-        {{-- 3. Keunggulan --}}
-        @if($paket->keunggulanPaket->count() > 0)
-          <div class="kartu-section">
-            <h2><i class="bi bi-star"></i> Keunggulan Paket</h2>
-            <ul class="list-keunggulan">
-              @foreach($paket->keunggulanPaket->sortBy('urutan') as $item)
-                <li><i class="bi bi-shield-check"></i> {{ $item->isi }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
+        @php
+          $jenisClass = match($paket->jenis_wisata) {
+            'Wisata Religi'      => 'jenis-religi',
+            'Wisata Lokal'       => 'jenis-lokal',
+            'Wisata Mancanegara' => 'jenis-manca',
+            default              => 'jenis-lokal',
+          };
+        @endphp
 
-        {{-- 4. Itinerary --}}
-        @if($paket->itinerary->count() > 0)
-          <div class="kartu-section">
-            <h2><i class="bi bi-calendar3"></i> Itinerary Perjalanan</h2>
-            <div class="timeline">
-              @foreach($paket->itinerary->sortBy('hari') as $item)
-                <div class="timeline-item">
-                  <div class="timeline-dot">{{ $item->hari }}</div>
-                  <p class="timeline-label">Hari ke-{{ $item->hari }}</p>
-                  <p class="timeline-desc">{{ $item->deskripsi }}</p>
-                </div>
-              @endforeach
-            </div>
-          </div>
-        @endif
+        <span class="badge-jenis {{ $jenisClass }}">{{ $paket->jenis_wisata }}</span>
+        <h1 class="nama-paket">{{ $paket->nama }}</h1>
 
-        {{-- 5. Syarat & Ketentuan --}}
-        @if($paket->syaratKetentuan->count() > 0)
-          <div class="kartu-section">
-            <h2><i class="bi bi-clipboard-check"></i> Syarat &amp; Ketentuan</h2>
-            <ul class="list-syarat">
-              @foreach($paket->syaratKetentuan->sortBy('urutan') as $item)
-                <li>{{ $item->isi }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
-
-      </div>{{-- /col kiri --}}
-
-      {{-- Kolom kanan: sidebar harga --}}
-      <div class="col-lg-4">
-        <div class="sidebar-harga">
-
-          <p class="harga-label-kecil">Harga mulai dari</p>
-          <p class="harga-besar">
-            Rp {{ number_format($paket->harga, 0, ',', '.') }}
-            <span class="harga-satuan">/ orang</span>
-          </p>
-
-          <hr style="border-color:#f0f2f8;margin:16px 0;">
-
-          <div class="info-sidebar"><i class="bi bi-geo-alt-fill"></i> <span>{{ $paket->lokasi }}</span></div>
-          <div class="info-sidebar"><i class="bi bi-clock-fill"></i> <span>{{ $paket->durasi }}</span></div>
-          <div class="info-sidebar"><i class="bi bi-tag-fill"></i> <span>{{ $paket->jenis_wisata }}</span></div>
-
-          <a href="https://wa.me/6282324246645?text={{ urlencode('Halo, saya ingin memesan paket ' . $paket->nama) }}"
-             target="_blank" rel="noopener noreferrer" class="btn-wa-besar">
-            <i class="bi bi-whatsapp"></i> Pesan Sekarang
-          </a>
-          <a href="{{ route('lyn') }}" class="btn-kembali">
-            <i class="bi bi-arrow-left"></i> Kembali ke Layanan
-          </a>
-
+        <div class="pills">
+          <span class="pill"><i class="bi bi-geo-alt-fill"></i> {{ $paket->lokasi }}</span>
+          <span class="pill"><i class="bi bi-clock-fill"></i> {{ $paket->durasi }}</span>
         </div>
-      </div>{{-- /col kanan --}}
 
+        @if($paket->p_singkat)
+          <p class="deskripsi-singkat">{{ $paket->p_singkat }}</p>
+        @endif
+      </div>
     </div>
+
+    {{-- Deskripsi Lengkap --}}
+    @if($paket->deskripsi)
+      <div class="seksi">
+        <p class="seksi-judul"><i class="bi bi-file-text"></i> Deskripsi Lengkap</p>
+        <div class="teks-deskripsi">{!! $paket->deskripsi !!}</div>
+      </div>
+    @endif
+
+    {{-- Keunggulan Paket --}}
+    @if($paket->keunggulanPaket->count() > 0)
+      <div class="seksi">
+        <p class="seksi-judul"><i class="bi bi-star"></i> Keunggulan Paket</p>
+        <ul class="list-keunggulan">
+          @foreach($paket->keunggulanPaket->sortBy('urutan') as $item)
+            <li><i class="bi bi-check-circle-fill"></i> {{ $item->isi }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+
+    {{-- Fasilitas --}}
+    @if($paket->fasilitas->count() > 0)
+      <div class="seksi">
+        <p class="seksi-judul"><i class="bi bi-check2-circle"></i> Fasilitas</p>
+        <ul class="list-fasilitas">
+          @foreach($paket->fasilitas->sortBy('urutan') as $item)
+            <li><i class="bi bi-check-lg"></i> {{ $item->nama }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+
+    {{-- Itinerary --}}
+    @if($paket->itinerary->count() > 0)
+      <div class="seksi">
+        <p class="seksi-judul"><i class="bi bi-calendar3"></i> Itinerary Perjalanan</p>
+        <div class="timeline">
+          @foreach($paket->itinerary->sortBy('hari') as $item)
+            <div class="timeline-item">
+              <div class="timeline-dot">{{ $item->hari }}</div>
+              <p class="timeline-label">Hari ke-{{ $item->hari }}</p>
+              <p class="timeline-desc">{{ $item->deskripsi }}</p>
+            </div>
+          @endforeach
+        </div>
+      </div>
+    @endif
+
+    {{-- Syarat & Ketentuan --}}
+    @if($paket->syaratKetentuan->count() > 0)
+      <div class="seksi">
+        <p class="seksi-judul"><i class="bi bi-clipboard-check"></i> Syarat &amp; Ketentuan</p>
+        <ul class="list-syarat">
+          @foreach($paket->syaratKetentuan->sortBy('urutan') as $item)
+            <li>{{ $item->isi }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+
+    {{-- Tombol kembali --}}
+    <a href="{{ route('lyn') }}" class="btn-kembali-top">
+      <i class="bi bi-arrow-left"></i> Kembali ke Layanan
+    </a>
+
   </div>
 </div>
 
 
-{{-- ══ FOOTER ══ --}}
-<footer>
+{{-- FOOTER --}}
+<footer style="margin-bottom:72px;">
   <div class="foot-inner">
     <div class="row g-5">
 
@@ -421,10 +449,10 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
           dengan layanan profesional dan harga yang transparan.
         </p>
         <div class="socials">
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="https://wa.me/6282324246645" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i></a>
-          <a href="#"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
 
@@ -443,7 +471,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       </div>
 
     </div>
-    <hr style="border-color:rgba(255,255,255,.07);margin:44px 0 22px;">
+    <hr style="border-color:rgba(255,255,255,.07);margin:36px 0 18px;">
     <div class="d-flex flex-wrap justify-content-between gap-2">
       <p class="foot-copy mb-0">&copy; {{ date('Y') }} Nirwana Tour &amp; Travel. Hak cipta dilindungi.</p>
       <p class="foot-copy mb-0">Berizin resmi &mdash; Terdaftar Kemenparekraf</p>
@@ -452,9 +480,40 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 </footer>
 
 
+{{-- STICKY BOTTOM BAR --}}
+<div class="bottom-bar">
+  <div class="bottom-harga">
+    <small>Harga per orang</small>
+    <div>
+      <strong>Rp {{ number_format($paket->harga, 0, ',', '.') }}</strong>
+      <span>/ orang</span>
+    </div>
+  </div>
+  <a href="https://wa.me/6282324246645?text={{ urlencode('Halo, saya ingin memesan paket ' . $paket->nama) }}"
+     target="_blank" rel="noopener noreferrer" class="btn-pesan">
+    <i class="bi bi-whatsapp"></i> Pesan Sekarang
+  </a>
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // ── Double-klik logo → masuk admin (tersembunyi) ──────────
+  var burgerBtn  = document.getElementById('burgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var burgerIcon = document.getElementById('burgerIcon');
+
+  burgerBtn.addEventListener('click', function () {
+    var buka = mobileMenu.classList.toggle('buka');
+    burgerIcon.className = buka ? 'bi bi-x-lg' : 'bi bi-list';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('buka');
+      burgerIcon.className = 'bi bi-list';
+    });
+  });
+
   document.getElementById('logo-link').addEventListener('dblclick', function (e) {
     e.preventDefault();
     window.location.href = '/admin';
