@@ -161,7 +161,7 @@ a { text-decoration: none; }
 .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: #e8bf60; line-height: 1; margin-bottom: 4px; }
 .stat-lbl { font-size: .78rem; color: rgba(255,255,255,.5); }
 
-/* ── CTA ATAS ───────l��─────────────────────────────── */
+/* ── CTA ATAS ───────5��─────────────────────────────── */
 .cta-top { background: #f5f2ec; border-bottom: 1px solid #dde3ee; padding: 64px 0; text-align: center; }
 .pill { display: inline-block; background: #e8edf8; color: #163060; font-size: .69rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
 .cta-top h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.35rem, 2.8vw, 1.9rem); color: #0c1d3a; margin-bottom: 12px; }
@@ -190,7 +190,7 @@ a { text-decoration: none; }
   grid-auto-rows: 220px; gap: 14px;
   max-width: 1040px; margin: 0 auto; padding: 0 20px;
 }
-.gitem { overflow: hidden; border-radius: 16px; position: relative; background: #ccc; cursor: pointer; }
+.gitem { overflow: hidden; border-radius: 16px; position: relative; background: #ccc; cursor: pointer; height: 100%; }
 .gitem.tall { grid-row: span 2; }
 .gitem img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
 .gitem:hover img { transform: scale(1.06); }
@@ -253,12 +253,22 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
   .burger-btn { display: flex; }
 }
 @media (max-width: 767px) {
-  .galeri-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
-  .gitem.tall { grid-row: span 1; }
-}
-@media (max-width: 575px) {
   .navbar-main { padding: 0 16px; }
-  .galeri-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+  .galeri-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: unset;
+    gap: 10px;
+    padding: 0 16px;
+  }
+  .gitem, .gitem.tall {
+    aspect-ratio: 1 / 1;
+    grid-row: span 1;
+    height: unset;
+  }
+  .gitem:last-child:nth-child(odd) {
+    grid-column: span 2;
+    aspect-ratio: 2 / 1;
+  }
 }
 </style>
 </head>
@@ -498,23 +508,23 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 
   <div class="galeri-grid">
     <div class="gitem tall" onclick="bukaLb(this)">
-      <img src="{{ asset('img/galeri/g1.jpg') }}" alt="Galeri 1" loading="lazy">
+      <img src="{{ asset('img/g1.jpeg') }}" alt="Galeri 1" loading="lazy">
       <div class="gitem-ov"><i class="bi bi-zoom-in"></i></div>
     </div>
     <div class="gitem" onclick="bukaLb(this)">
-      <img src="{{ asset('img/galeri/g2.jpg') }}" alt="Galeri 2" loading="lazy">
+      <img src="{{ asset('img/g2.jpeg') }}" alt="Galeri 2" loading="lazy">
       <div class="gitem-ov"><i class="bi bi-zoom-in"></i></div>
     </div>
     <div class="gitem" onclick="bukaLb(this)">
-      <img src="{{ asset('img/galeri/g3.jpg') }}" alt="Galeri 3" loading="lazy">
+      <img src="{{ asset('img/g3.jpeg') }}" alt="Galeri 3" loading="lazy">
       <div class="gitem-ov"><i class="bi bi-zoom-in"></i></div>
     </div>
     <div class="gitem" onclick="bukaLb(this)">
-      <img src="{{ asset('img/galeri/g4.jpg') }}" alt="Galeri 4" loading="lazy">
+      <img src="{{ asset('img/g4.jpeg') }}" alt="Galeri 4" loading="lazy">
       <div class="gitem-ov"><i class="bi bi-zoom-in"></i></div>
     </div>
     <div class="gitem" onclick="bukaLb(this)">
-      <img src="{{ asset('img/galeri/g5.jpg') }}" alt="Galeri 5" loading="lazy">
+      <img src="{{ asset('img/g5.jpeg') }}" alt="Galeri 5" loading="lazy">
       <div class="gitem-ov"><i class="bi bi-zoom-in"></i></div>
     </div>
   </div>
