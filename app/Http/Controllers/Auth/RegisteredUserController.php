@@ -32,7 +32,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $key = 'register:' . $request->ip();
-        if (RateLimiter::tooManyAttempts($key, 5)) {
+        if (RateLimiter::tooManyAttempts($key, 3)) {
         return back()->withErrors(['email' => 'Terlalu banyak percobaan. Coba lagi dalam 1 menit.']);
         }
         RateLimiter::hit($key, 60);
