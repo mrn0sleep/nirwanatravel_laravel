@@ -23,15 +23,12 @@ a { text-decoration: none; }
   display: flex; align-items: center;
   transition: background .3s;
 }
-/* Kelas .scrolled ditambah JavaScript saat user scroll ke bawah */
 .navbar-main.scrolled {
   background: rgba(12,29,58,.95);
   backdrop-filter: blur(14px);
   box-shadow: 0 2px 20px rgba(0,0,0,.2);
 }
 .nav-wrap { width: 100%; max-width: 1180px; margin: 0 auto; display: flex; align-items: center; }
-
-/* Kotak kecil tempat logo dipasang */
 .logo-box {
   width: 42px; height: 42px; border-radius: 10px;
   background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
@@ -41,15 +38,48 @@ a { text-decoration: none; }
 .logo-box img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .logo-text strong { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.05rem; display: block; line-height: 1.1; }
 .logo-text small { color: rgba(255,255,255,.45); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; }
-
-/* Menu navigasi */
 .nav-menu { display: flex; list-style: none; gap: 2px; margin: 0 auto; }
-.nav-menu a {
-  display: block; padding: 7px 13px;
-  font-size: .87rem; font-weight: 500; color: rgba(255,255,255,.8);
-  border-radius: 8px; transition: .2s;
-}
+.nav-menu a { display: block; padding: 7px 13px; font-size: .87rem; font-weight: 500; color: rgba(255,255,255,.8); border-radius: 8px; transition: .2s; }
 .nav-menu a:hover, .nav-menu a.active { color: #fff; background: rgba(255,255,255,.1); }
+
+/* ── BURGER BUTTON ───────────────────────────────── */
+.burger-btn {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.18);
+  color: #fff; font-size: 1.25rem;
+  cursor: pointer; margin-left: auto;
+  transition: background .2s;
+}
+.burger-btn:hover { background: rgba(255,255,255,.2); }
+
+/* ── MOBILE MENU ─────────────────────────────────── */
+.mobile-menu {
+  display: none;
+  position: fixed; top: 68px; left: 0; right: 0;
+  background: #0c1d3a;
+  border-top: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  z-index: 998; padding: 12px 0 20px;
+}
+.mobile-menu.buka { display: block; }
+.mobile-menu a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 24px; font-size: .93rem; font-weight: 500;
+  color: rgba(255,255,255,.78);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: background .2s, color .2s;
+}
+.mobile-menu a:hover, .mobile-menu a.active { background: rgba(255,255,255,.07); color: #fff; }
+.mobile-menu a i { font-size: 1rem; color: #e8bf60; width: 20px; }
+.mobile-menu .wa-mobile {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: 16px 24px 0;
+  background: #1fa563; color: #fff; font-weight: 600; font-size: .88rem;
+  padding: 11px; border-radius: 50px;
+}
+.mobile-menu .wa-mobile:hover { background: #22bd72; color: #fff; }
 
 /* ── TOMBOL ──────────────────────────────────────── */
 .btn-wa {
@@ -59,7 +89,6 @@ a { text-decoration: none; }
   box-shadow: 0 5px 16px rgba(31,165,99,.35); transition: .2s;
 }
 .btn-wa:hover { background: #22bd72; color: #fff; transform: translateY(-2px); }
-
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
   background: transparent; color: #fff; font-weight: 600; font-size: .9rem;
@@ -67,7 +96,6 @@ a { text-decoration: none; }
   border: 2px solid rgba(255,255,255,.4); transition: .2s;
 }
 .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.7); color: #fff; transform: translateY(-2px); }
-
 .btn-white {
   display: inline-flex; align-items: center; gap: 8px;
   background: #fff; color: #0c1d3a; font-weight: 700; font-size: .9rem;
@@ -76,25 +104,16 @@ a { text-decoration: none; }
 }
 .btn-white:hover { background: #f5f2ec; color: #0c1d3a; transform: translateY(-2px); }
 
-/* ── HERO (layar penuh + video latar) ────────────── */
+/* ── HERO ────────────────────────────────────────── */
 .hero {
   min-height: 100vh; display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden; text-align: center;
   background: #0c1d3a;
 }
-.hero-video {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover; z-index: 0;
-}
-/* Lapisan gelap agar teks tetap terbaca */
+.hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(145deg,
-    rgba(10,22,40,.78) 0%,
-    rgba(12,36,71,.62) 40%,
-    rgba(14,45,94,.55) 65%,
-    rgba(12,29,58,.78) 100%);
+  background: linear-gradient(145deg, rgba(10,22,40,.78) 0%, rgba(12,36,71,.62) 40%, rgba(14,45,94,.55) 65%, rgba(12,29,58,.78) 100%);
 }
 .hero-blob {
   position: absolute; border-radius: 50%; pointer-events: none;
@@ -102,8 +121,6 @@ a { text-decoration: none; }
   width: 560px; height: 560px; top: -10%; right: -8%; opacity: .3; z-index: 1;
 }
 .hero-body { position: relative; z-index: 2; max-width: 700px; padding: 0 20px; }
-
-/* Badge kecil di atas judul */
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
@@ -112,9 +129,7 @@ a { text-decoration: none; }
   padding: 6px 16px; border-radius: 50px; margin-bottom: 24px;
   animation: fadeUp .65s ease both;
 }
-/* Titik emas berkedip */
 .dot { width: 6px; height: 6px; border-radius: 50%; background: #e8bf60; animation: blink 2s infinite; }
-
 .hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 5.5vw, 3.4rem);
@@ -131,8 +146,6 @@ a { text-decoration: none; }
   text-shadow: 0 1px 10px rgba(0,0,0,.3);
 }
 .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeUp .65s .4s ease both; }
-
-/* Indikator scroll di bawah */
 .scroll-hint {
   position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 5px;
@@ -148,7 +161,7 @@ a { text-decoration: none; }
 .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: #e8bf60; line-height: 1; margin-bottom: 4px; }
 .stat-lbl { font-size: .78rem; color: rgba(255,255,255,.5); }
 
-/* ── CTA ATAS ─────────────────────────────────────── */
+/* ── CTA ATAS ───────l��─────────────────────────────── */
 .cta-top { background: #f5f2ec; border-bottom: 1px solid #dde3ee; padding: 64px 0; text-align: center; }
 .pill { display: inline-block; background: #e8edf8; color: #163060; font-size: .69rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
 .cta-top h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.35rem, 2.8vw, 1.9rem); color: #0c1d3a; margin-bottom: 12px; }
@@ -159,16 +172,11 @@ a { text-decoration: none; }
 .sec-label { display: inline-block; background: #eef2ff; color: #1e4dbf; font-size: .69rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
 .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3.2vw, 2.1rem); color: #0c1d3a; margin-bottom: 12px; }
 .sec-sub { font-size: .93rem; color: #6b7a90; max-width: 480px; margin: 0 auto; line-height: 1.78; }
-
-/* Kartu keunggulan */
 .k-card {
   background: #f5f2ec; border: 1px solid #dde3ee; border-radius: 16px;
   padding: 28px 22px; height: 100%; position: relative; overflow: hidden; transition: .25s;
 }
-.k-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 3px; background: transparent; transition: .25s;
-}
+.k-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: transparent; transition: .25s; }
 .k-card:hover { background: #fff; transform: translateY(-5px); box-shadow: 0 16px 40px rgba(13,31,60,.12); }
 .k-card:hover::before { background: #1e4dbf; }
 .k-icon { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 16px; }
@@ -239,7 +247,11 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 @keyframes scrollY { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
 
 /* ── RESPONSIF ────────────────────────────────────── */
-@media (max-width: 991px) { .nav-menu { display: none; } }
+@media (max-width: 991px) {
+  .nav-menu { display: none; }
+  .auth-desktop { display: none; }
+  .burger-btn { display: flex; }
+}
 @media (max-width: 767px) {
   .galeri-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
   .gitem.tall { grid-row: span 1; }
@@ -256,7 +268,6 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 <nav class="navbar-main" id="navbar">
   <div class="nav-wrap">
 
-    {{-- Logo — double-klik untuk masuk ke admin (tersembunyi dari pengunjung) --}}
     <a href="{{ route('beranda') }}" id="logo-link" class="d-flex align-items-center gap-2 me-4">
       <div class="logo-box">
         <img src="{{ asset('img/logo.png') }}" alt="Logo Nirwana Tour & Travel">
@@ -273,7 +284,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       <li><a href="{{ route('tk') }}">Tentang Kami</a></li>
     </ul>
 
-    <div class="ms-auto">
+    <div class="ms-auto auth-desktop">
       @auth
         <div class="dropdown">
           <button class="btn btn-sm d-flex align-items-center gap-2 rounded-pill text-white"
@@ -306,17 +317,39 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
             </li>
           </ul>
         </div>
-      @else
       @endauth
     </div>
+
+    {{-- Tombol burger — hanya tampil di HP (≤991px) --}}
+    <button class="burger-btn" id="burgerBtn" aria-label="Buka menu">
+      <i class="bi bi-list" id="burgerIcon"></i>
+    </button>
 
   </div>
 </nav>
 
+{{-- ══ MOBILE MENU ══ --}}
+<div class="mobile-menu" id="mobileMenu">
+  <a href="{{ route('beranda') }}" class="active"><i class="bi bi-house-fill"></i> Beranda</a>
+  <a href="{{ route('lyn') }}"><i class="bi bi-compass-fill"></i> Layanan</a>
+  <a href="{{ route('tk') }}"><i class="bi bi-building"></i> Tentang Kami</a>
+  @auth
+    <a href="{{ route('profile.edit') }}"><i class="bi bi-person-circle"></i> Profil Saya</a>
+    <form method="POST" action="{{ route('logout') }}" style="padding:0 24px;margin-top:4px;">
+      @csrf
+      <button type="submit" style="width:100%;padding:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:rgba(255,100,100,.85);font-size:.88rem;font-weight:600;cursor:pointer;">
+        <i class="bi bi-box-arrow-right"></i> Keluar
+      </button>
+    </form>
+  @endauth
+  <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="wa-mobile">
+    <i class="bi bi-whatsapp"></i> Hubungi Kami via WhatsApp
+  </a>
+</div>
+
 
 {{-- ══ HERO ══ --}}
 <section class="hero">
-  {{-- Video latar — file: public/img/video.mp4 --}}
   <video class="hero-video" autoplay muted loop playsinline>
     <source src="{{ asset('img/video.mp4') }}" type="video/mp4">
   </video>
@@ -463,7 +496,6 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
     <p class="sec-sub">Sekilas momen indah dari perjalanan para jamaah dan wisatawan bersama Nirwana.</p>
   </div>
 
-  {{-- Grid foto — file gambar ada di public/img/galeri/ --}}
   <div class="galeri-grid">
     <div class="gitem tall" onclick="bukaLb(this)">
       <img src="{{ asset('img/galeri/g1.jpg') }}" alt="Galeri 1" loading="lazy">
@@ -488,7 +520,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
   </div>
 </section>
 
-{{-- Lightbox (fullscreen saat foto diklik) --}}
+{{-- Lightbox --}}
 <div class="lb" id="lightbox">
   <button class="lb-x" onclick="tutupLb()">&times;</button>
   <img id="lb-img" src="" alt="">
@@ -541,15 +573,9 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 
       <div class="col-6 col-md-4">
         <h4>Kontak</h4>
-        <a href="tel:+6282324246645" class="foot-link">
-          <i class="bi bi-telephone"></i>+62 823-2424-6645
-        </a>
-        <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="foot-link">
-          <i class="bi bi-whatsapp"></i>+62 823-2424-6645
-        </a>
-        <a href="mailto:info@nirwanatravel.id" class="foot-link">
-          <i class="bi bi-envelope"></i>info@nirwanatravel.id
-        </a>
+        <a href="tel:+6282324246645" class="foot-link"><i class="bi bi-telephone"></i>+62 823-2424-6645</a>
+        <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="foot-link"><i class="bi bi-whatsapp"></i>+62 823-2424-6645</a>
+        <a href="mailto:info@nirwanatravel.id" class="foot-link"><i class="bi bi-envelope"></i>info@nirwanatravel.id</a>
       </div>
 
     </div>
@@ -570,23 +596,38 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
   });
 
+  // ── Toggle mobile menu ────────────────────────────────────
+  var burgerBtn  = document.getElementById('burgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var burgerIcon = document.getElementById('burgerIcon');
+
+  burgerBtn.addEventListener('click', function () {
+    var buka = mobileMenu.classList.toggle('buka');
+    burgerIcon.className = buka ? 'bi bi-x-lg' : 'bi bi-list';
+  });
+
+  // Tutup menu saat link diklik
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('buka');
+      burgerIcon.className = 'bi bi-list';
+    });
+  });
+
   // ── Lightbox galeri ───────────────────────────────────────
   function bukaLb(el) {
-    var src = el.querySelector('img').src;
-    var alt = el.querySelector('img').alt;
-    document.getElementById('lb-img').src = src;
-    document.getElementById('lb-cap').textContent = alt;
+    document.getElementById('lb-img').src = el.querySelector('img').src;
+    document.getElementById('lb-cap').textContent = el.querySelector('img').alt;
     document.getElementById('lightbox').classList.add('show');
   }
   function tutupLb() {
     document.getElementById('lightbox').classList.remove('show');
   }
-  // Klik di luar foto = tutup lightbox
   document.getElementById('lightbox').addEventListener('click', function (e) {
     if (e.target === this) tutupLb();
   });
 
-  // ── Double-klik logo → masuk admin (tersembunyi) ──────────
+  // ── Double-klik logo → admin (tersembunyi) ────────────────
   document.getElementById('logo-link').addEventListener('dblclick', function (e) {
     e.preventDefault();
     window.location.href = '/admin';

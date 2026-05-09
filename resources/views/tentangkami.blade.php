@@ -38,18 +38,50 @@ a { text-decoration: none; }
 .nav-menu { display: flex; list-style: none; gap: 2px; margin: 0 auto; }
 .nav-menu a { display: block; padding: 7px 13px; font-size: .87rem; font-weight: 500; color: rgba(255,255,255,.8); border-radius: 8px; transition: .2s; }
 .nav-menu a:hover, .nav-menu a.active { color: #fff; background: rgba(255,255,255,.1); }
-.btn-masuk {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.22);
-  color: #fff; font-size: .84rem; font-weight: 600;
-  padding: 7px 18px; border-radius: 50px; transition: all .2s;
-}
-.btn-masuk:hover { background: rgba(255,255,255,.18); color: #fff; }
 .user-avatar {
   width: 30px; height: 30px; border-radius: 50%;
   background: #c49a2a; color: #fff; font-weight: 700; font-size: .82rem;
   display: flex; align-items: center; justify-content: center;
 }
+
+/* ── BURGER BUTTON ───────────────────────────────── */
+.burger-btn {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.18);
+  color: #fff; font-size: 1.25rem;
+  cursor: pointer; margin-left: auto;
+  transition: background .2s;
+}
+.burger-btn:hover { background: rgba(255,255,255,.2); }
+
+/* ── MOBILE MENU ─────────────────────────────────── */
+.mobile-menu {
+  display: none;
+  position: fixed; top: 68px; left: 0; right: 0;
+  background: #0c1d3a;
+  border-top: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  z-index: 998; padding: 12px 0 20px;
+}
+.mobile-menu.buka { display: block; }
+.mobile-menu a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 24px; font-size: .93rem; font-weight: 500;
+  color: rgba(255,255,255,.78);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: background .2s, color .2s;
+}
+.mobile-menu a:hover, .mobile-menu a.active { background: rgba(255,255,255,.07); color: #fff; }
+.mobile-menu a i { font-size: 1rem; color: #e8bf60; width: 20px; }
+.mobile-menu .wa-mobile {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: 16px 24px 0;
+  background: #1fa563; color: #fff; font-weight: 600; font-size: .88rem;
+  padding: 11px; border-radius: 50px;
+}
+.mobile-menu .wa-mobile:hover { background: #22bd72; color: #fff; }
 
 /* ── TOMBOL ──────────────────────────────────────── */
 .btn-wa {
@@ -80,7 +112,6 @@ a { text-decoration: none; }
   background: linear-gradient(145deg, #0a1628 0%, #0c2447 45%, #0c1d3a 100%);
   display: flex; align-items: center; position: relative; overflow: hidden;
 }
-/* Dekorasi lingkaran belakang */
 .hero-tk::before {
   content: ''; position: absolute;
   top: -15%; right: -10%; width: 520px; height: 520px;
@@ -98,8 +129,6 @@ a { text-decoration: none; }
   max-width: 1100px; margin: 0 auto; padding: 72px 24px;
   display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
 }
-
-/* Kolom kiri: teks */
 .hero-left .badge-tk {
   display: inline-flex; align-items: center; gap: 7px;
   background: rgba(232,191,96,.15); border: 1px solid rgba(232,191,96,.3);
@@ -115,8 +144,6 @@ a { text-decoration: none; }
 .hero-left h1 em { font-style: italic; color: #e8bf60; }
 .hero-left p { font-size: .95rem; color: rgba(255,255,255,.72); line-height: 1.8; margin-bottom: 14px; }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
-
-/* Kolom kanan: kartu kuning info perusahaan */
 .info-card {
   background: linear-gradient(135deg, #e8bf60 0%, #c49a2a 100%);
   border-radius: 24px; padding: 32px; position: relative; overflow: hidden;
@@ -181,9 +208,7 @@ a { text-decoration: none; }
 .nilai-card p { font-size: .82rem; color: #6b7a90; line-height: 1.7; margin: 0; }
 
 /* ── CTA BAWAH ────────────────────────────────────── */
-.cta-bot {
-  background: #0c1d3a; padding: 80px 0; text-align: center; position: relative; overflow: hidden;
-}
+.cta-bot { background: #0c1d3a; padding: 80px 0; text-align: center; position: relative; overflow: hidden; }
 .cta-bot::before {
   content: ''; position: absolute; top: -50%; right: -8%;
   width: 440px; height: 440px; border-radius: 50%;
@@ -215,8 +240,10 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 /* ── RESPONSIF ───────────────────────────────────── */
 @media (max-width: 991px) {
   .nav-menu { display: none; }
+  .auth-desktop { display: none; }
+  .burger-btn { display: flex; }
   .hero-tk-inner { grid-template-columns: 1fr; gap: 36px; }
-  .info-card { display: none; } /* sembunyikan kartu kanan di mobile, teks saja */
+  .info-card { display: none; }
 }
 @media (max-width: 575px) {
   .navbar-main { padding: 0 16px; }
@@ -230,7 +257,6 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 <nav class="navbar-main">
   <div class="nav-wrap">
 
-    {{-- Logo — double-klik untuk masuk ke admin (tersembunyi dari pengunjung) --}}
     <a href="{{ route('beranda') }}" id="logo-link" class="d-flex align-items-center gap-2 me-4">
       <div class="logo-box">
         <img src="{{ asset('img/logo.png') }}" alt="Logo Nirwana Tour & Travel">
@@ -247,7 +273,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       <li><a href="{{ route('tk') }}" class="active">Tentang Kami</a></li>
     </ul>
 
-    <div class="ms-auto">
+    <div class="ms-auto auth-desktop">
       @auth
         <div class="dropdown">
           <button class="btn btn-sm d-flex align-items-center gap-2 rounded-pill text-white"
@@ -278,19 +304,41 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
             </li>
           </ul>
         </div>
-      @else
       @endauth
     </div>
 
+    {{-- Tombol burger — hanya tampil di HP (≤991px) --}}
+    <button class="burger-btn" id="burgerBtn" aria-label="Buka menu">
+      <i class="bi bi-list" id="burgerIcon"></i>
+    </button>
+
   </div>
 </nav>
+
+{{-- ══ MOBILE MENU ══ --}}
+<div class="mobile-menu" id="mobileMenu">
+  <a href="{{ route('beranda') }}"><i class="bi bi-house-fill"></i> Beranda</a>
+  <a href="{{ route('lyn') }}"><i class="bi bi-compass-fill"></i> Layanan</a>
+  <a href="{{ route('tk') }}" class="active"><i class="bi bi-building"></i> Tentang Kami</a>
+  @auth
+    <a href="{{ route('profile.edit') }}"><i class="bi bi-person-circle"></i> Profil Saya</a>
+    <form method="POST" action="{{ route('logout') }}" style="padding:0 24px;margin-top:4px;">
+      @csrf
+      <button type="submit" style="width:100%;padding:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:rgba(255,100,100,.85);font-size:.88rem;font-weight:600;cursor:pointer;">
+        <i class="bi bi-box-arrow-right"></i> Keluar
+      </button>
+    </form>
+  @endauth
+  <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="wa-mobile">
+    <i class="bi bi-whatsapp"></i> Hubungi Kami via WhatsApp
+  </a>
+</div>
 
 
 {{-- ══ HERO ══ --}}
 <section class="hero-tk">
   <div class="hero-tk-inner">
 
-    {{-- Kolom kiri: teks --}}
     <div class="hero-left">
       <div class="badge-tk">
         <i class="bi bi-building"></i>
@@ -316,7 +364,6 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       </div>
     </div>
 
-    {{-- Kolom kanan: kartu info --}}
     <div class="info-card">
       <div class="stat-badge">
         <strong>19+</strong>
@@ -500,15 +547,9 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 
       <div class="col-6 col-md-4">
         <h4>Kontak</h4>
-        <a href="tel:+6282324246645" class="foot-link">
-          <i class="bi bi-telephone"></i>+62 823-2424-6645
-        </a>
-        <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="foot-link">
-          <i class="bi bi-whatsapp"></i>+62 823-2424-6645
-        </a>
-        <a href="mailto:info@nirwanatravel.id" class="foot-link">
-          <i class="bi bi-envelope"></i>info@nirwanatravel.id
-        </a>
+        <a href="tel:+6282324246645" class="foot-link"><i class="bi bi-telephone"></i>+62 823-2424-6645</a>
+        <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="foot-link"><i class="bi bi-whatsapp"></i>+62 823-2424-6645</a>
+        <a href="mailto:info@nirwanatravel.id" class="foot-link"><i class="bi bi-envelope"></i>info@nirwanatravel.id</a>
       </div>
 
     </div>
@@ -524,19 +565,37 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  // ── Toggle mobile menu ────────────────────────────────────
+  var burgerBtn  = document.getElementById('burgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var burgerIcon = document.getElementById('burgerIcon');
+
+  burgerBtn.addEventListener('click', function () {
+    var buka = mobileMenu.classList.toggle('buka');
+    burgerIcon.className = buka ? 'bi bi-x-lg' : 'bi bi-list';
+  });
+
+  // Tutup menu saat link diklik
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('buka');
+      burgerIcon.className = 'bi bi-list';
+    });
+  });
+
   // ── Animasi scroll reveal ─────────────────────────────────
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
-        io.unobserve(entry.target); // hentikan setelah tampil, lebih hemat
+        io.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 
-  // ── Double-klik logo → masuk admin (tersembunyi) ──────────
+  // ── Double-klik logo → admin (tersembunyi) ────────────────
   document.getElementById('logo-link').addEventListener('dblclick', function (e) {
     e.preventDefault();
     window.location.href = '/admin';
