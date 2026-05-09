@@ -173,12 +173,12 @@ a { text-decoration: none; }
 }
 
 /* Itinerary */
-.timeline { position: relative; padding-left: 22px; }
+.timeline { position: relative; padding-left: 36px; }
 .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #e4e9f5; }
 .timeline-item { position: relative; margin-bottom: 18px; }
 .timeline-item:last-child { margin-bottom: 0; }
 .timeline-dot {
-  position: absolute; left: -18px; top: 3px;
+  position: absolute; left: -26px; top: 3px;
   width: 20px; height: 20px; border-radius: 50%;
   background: #1e4dbf; color: #fff;
   font-size: .62rem; font-weight: 700;
