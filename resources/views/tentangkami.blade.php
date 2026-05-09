@@ -95,9 +95,16 @@ a { text-decoration: none; }
   display: inline-flex; align-items: center; gap: 8px;
   background: transparent; color: #0c1d3a; font-weight: 600; font-size: .9rem;
   padding: 12px 26px; border-radius: 50px;
-  border: 2px solid #c5cfe3; transition: .2s;
+border: 2px solid #c5cfe3; transition: .2s;
 }
 .btn-ghost-dark:hover { border-color: #0c1d3a; color: #0c1d3a; transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: #fff; font-weight: 600; font-size: .9rem;
+  padding: 13px 28px; border-radius: 50px;
+  border: 2px solid rgba(255,255,255,.4); transition: .2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.7); color: #fff; transform: translateY(-2px); }
 .btn-white {
   display: inline-flex; align-items: center; gap: 8px;
   background: #fff; color: #0c1d3a; font-weight: 700; font-size: .9rem;
@@ -355,10 +362,10 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       </p>
       <div class="hero-btns">
         <a href="https://wa.me/6282324246645?text={{ urlencode('Halo, saya ingin konsultasi paket wisata.') }}"
-           target="_blank" rel="noopener" class="btn-wa">
+target="_blank" rel="noopener" class="btn-wa">
           <i class="bi bi-whatsapp"></i> Hubungi Kami
         </a>
-        <a href="{{ route('lyn') }}" class="btn-ghost-dark">
+        <a href="{{ route('lyn') }}" class="btn-ghost">
           <i class="bi bi-compass"></i> Lihat Paket
         </a>
       </div>

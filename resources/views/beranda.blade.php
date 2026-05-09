@@ -161,7 +161,7 @@ a { text-decoration: none; }
 .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: #e8bf60; line-height: 1; margin-bottom: 4px; }
 .stat-lbl { font-size: .78rem; color: rgba(255,255,255,.5); }
 
-/* ── CTA ATAS ───────5��─────────────────────────────── */
+/* ── CTA ATAS ────────────────────────────────────── */
 .cta-top { background: #f5f2ec; border-bottom: 1px solid #dde3ee; padding: 64px 0; text-align: center; }
 .pill { display: inline-block; background: #e8edf8; color: #163060; font-size: .69rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
 .cta-top h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.35rem, 2.8vw, 1.9rem); color: #0c1d3a; margin-bottom: 12px; }
@@ -377,11 +377,12 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       hingga wisata nusantara dan mancanegara. Aman, nyaman, dan berkesan.
     </p>
     <div class="hero-btns">
-      <a href="{{ route('lyn') }}" class="btn-wa">
-        <i class="bi bi-compass"></i> Lihat Paket
-      </a>
-      <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="btn-ghost">
+      {{-- PERUBAHAN: Lihat Paket sekarang pakai btn-ghost (putih), Hubungi Kami pakai btn-wa (hijau) --}}
+      <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="btn-wa">
         <i class="bi bi-whatsapp"></i> Hubungi Kami
+      </a>
+      <a href="{{ route('lyn') }}" class="btn-ghost">
+        <i class="bi bi-compass"></i> Lihat Paket
       </a>
     </div>
   </div>
