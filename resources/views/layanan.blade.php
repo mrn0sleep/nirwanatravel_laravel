@@ -455,7 +455,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
     <hr style="border-color:rgba(255,255,255,.07);margin:44px 0 22px;">
     <div class="d-flex flex-wrap justify-content-between gap-2">
       <p class="foot-copy mb-0">&copy; {{ date('Y') }} Nirwana Tour &amp; Travel. Hak cipta dilindungi.</p>
-      <p class="foot-copy mb-0">Berizin resmi &mdash; Terdaftar Kemenparekraf</p>
+      <p class="foot-copy mb-0">By E-Team TIC</p>
     </div>
   </div>
 </footer>
