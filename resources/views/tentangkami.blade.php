@@ -538,10 +538,9 @@ target="_blank" rel="noopener" class="btn-wa">
           dengan layanan profesional dan harga yang transparan.
         </p>
         <div class="socials">
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/nirwanatourtravels" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.facebook.com/NirwanaTourTravel" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
           <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
 
@@ -556,8 +555,10 @@ target="_blank" rel="noopener" class="btn-wa">
         <h4>Kontak</h4>
         <a href="tel:+6282324246645" class="foot-link"><i class="bi bi-telephone"></i>+62 823-2424-6645</a>
         <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="foot-link"><i class="bi bi-whatsapp"></i>+62 823-2424-6645</a>
-        <a href="mailto:info@nirwanatravel.id" class="foot-link"><i class="bi bi-envelope"></i>info@nirwanatravel.id</a>
+        <a href="mailto:nirwanatourtravels@gmail.com" class="foot-link"><i class="bi bi-envelope"></i>nirwanatourtravels@gmail.com</a>
       </div>
+
+    </div>
 
     </div>
 
