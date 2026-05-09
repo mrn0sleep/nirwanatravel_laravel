@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tentang Kami — Nirwana Tour &amp; Travel</title>
+<title>Tentang Kami Nirwana Tour &amp; Travel</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -259,7 +259,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 
     <a href="{{ route('beranda') }}" id="logo-link" class="d-flex align-items-center gap-2 me-4">
       <div class="logo-box">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo Nirwana Tour & Travel">
+        <img src="{{ asset('img/header.png') }}" alt="Logo Nirwana Tour & Travel">
       </div>
       <div class="logo-text">
         <strong>Nirwana</strong>
@@ -307,7 +307,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       @endauth
     </div>
 
-    {{-- Tombol burger — hanya tampil di HP (≤991px) --}}
+    {{-- Tombol burger hanya tampil di HP (≤991px) --}}
     <button class="burger-btn" id="burgerBtn" aria-label="Buka menu">
       <i class="bi bi-list" id="burgerIcon"></i>
     </button>
@@ -351,7 +351,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       </p>
       <p>
         Berizin resmi Kementerian Agama RI, kami hadir dengan komitmen memberikan
-        layanan terbaik — aman, nyaman, dan berkesan — dalam setiap perjalanan.
+        layanan terbaik, aman, nyaman, dan berkesan dalam setiap perjalanan.
       </p>
       <div class="hero-btns">
         <a href="https://wa.me/6282324246645?text={{ urlencode('Halo, saya ingin konsultasi paket wisata.') }}"
@@ -442,7 +442,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
         <div class="nilai-card">
           <div class="n-icon" style="background:#d9f5ea;color:#1a6640;"><i class="bi bi-heart-fill"></i></div>
           <h5>Pelayanan Tulus</h5>
-          <p>Melayani seperti keluarga sendiri — hangat, tanggap, dan selalu siap membantu.</p>
+          <p>Melayani seperti keluarga sendiri, hangat, tanggap, dan selalu siap membantu.</p>
         </div>
       </div>
 

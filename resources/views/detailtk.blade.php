@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ $paket->nama }} — Nirwana Tour &amp; Travel</title>
+<title>{{ $paket->nama }} Nirwana Tour &amp; Travel</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -155,7 +155,7 @@ a { text-decoration: none; }
   font-size: .8rem; color: #1e4dbf; font-weight: 500;
 }
 
-/* Syarat — CSS counter */
+/* Syarat CSS counter */
 .list-syarat { list-style: none; padding: 0; margin: 0; counter-reset: no; }
 .list-syarat li {
   counter-increment: no;
@@ -249,7 +249,7 @@ footer h4 { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-tra
 
     <a href="{{ route('beranda') }}" id="logo-link" class="d-flex align-items-center gap-2 me-4">
       <div class="logo-box">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo Nirwana Tour & Travel">
+        <img src="{{ asset('img/header.png') }}" alt="Logo Nirwana Tour & Travel">
       </div>
       <div class="logo-text">
         <strong>Nirwana</strong>

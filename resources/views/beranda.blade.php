@@ -280,7 +280,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 
     <a href="{{ route('beranda') }}" id="logo-link" class="d-flex align-items-center gap-2 me-4">
       <div class="logo-box">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo Nirwana Tour & Travel">
+        <img src="{{ asset('img/header.png') }}" alt="Logo Nirwana Tour & Travel">
       </div>
       <div class="logo-text">
         <strong>Nirwana</strong>
@@ -330,7 +330,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       @endauth
     </div>
 
-    {{-- Tombol burger — hanya tampil di HP (≤991px) --}}
+    {{-- Tombol burger hanya tampil di HP (≤991px) --}}
     <button class="burger-btn" id="burgerBtn" aria-label="Buka menu">
       <i class="bi bi-list" id="burgerIcon"></i>
     </button>
@@ -373,7 +373,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
     </div>
     <h1>Wujudkan Perjalanan<br><em>Impian Anda</em> Bersama Kami</h1>
     <p>
-      Nirwana Tour &amp; Travel hadir sebagai mitra perjalanan Anda — dari umroh, haji,
+      Nirwana Tour &amp; Travel hadir sebagai mitra perjalanan Anda, dari umroh, haji,
       hingga wisata nusantara dan mancanegara. Aman, nyaman, dan berkesan.
     </p>
     <div class="hero-btns">
@@ -465,7 +465,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
         <div class="k-card">
           <div class="k-icon" style="background:#d9f5ea;color:#1a6640;"><i class="bi bi-currency-dollar"></i></div>
           <h5>Harga Transparan</h5>
-          <p>Tidak ada biaya tersembunyi. Semua sudah termasuk dalam harga paket yang tertera — jelas dan pasti.</p>
+          <p>Tidak ada biaya tersembunyi. Semua sudah termasuk dalam harga paket yang tertera jelas dan pasti.</p>
         </div>
       </div>
 
@@ -473,7 +473,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
         <div class="k-card">
           <div class="k-icon" style="background:#fce8e8;color:#c0392b;"><i class="bi bi-heart-fill"></i></div>
           <h5>Pelayanan Sepenuh Hati</h5>
-          <p>Kami melayani seperti keluarga — dari pendaftaran hingga kepulangan, selalu ada tim yang siap membantu.</p>
+          <p>Kami melayani seperti keluarga, dari pendaftaran hingga kepulangan, selalu ada tim yang siap membantu.</p>
         </div>
       </div>
 
@@ -481,7 +481,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
         <div class="k-card">
           <div class="k-icon" style="background:#e8f0fe;color:#1a56db;"><i class="bi bi-geo-alt-fill"></i></div>
           <h5>Hotel Strategis</h5>
-          <p>Akomodasi dipilih dengan teliti — dekat Masjidil Haram dan Masjid Nabawi untuk kemudahan ibadah.</p>
+          <p>Akomodasi dipilih dengan teliti serta dekat Masjidil Haram dan Masjid Nabawi untuk kemudahan ibadah.</p>
         </div>
       </div>
 

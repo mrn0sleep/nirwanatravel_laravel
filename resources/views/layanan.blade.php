@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Layanan — Nirwana Tour &amp; Travel</title>
+<title>Nirwana Tour &amp; Travel</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -223,7 +223,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
 
     <a href="{{ route('beranda') }}" id="logo-link" class="d-flex align-items-center gap-2 me-4">
       <div class="logo-box">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo Nirwana Tour & Travel">
+        <img src="{{ asset('img/header.png') }}" alt="Logo Nirwana Tour & Travel">
       </div>
       <div class="logo-text">
         <strong>Nirwana</strong>
@@ -271,7 +271,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       @endauth
     </div>
 
-    {{-- Tombol burger — hanya tampil di HP (≤991px) --}}
+    {{-- Tombol burger hanya tampil di HP (≤991px) --}}
     <button class="burger-btn" id="burgerBtn" aria-label="Buka menu">
       <i class="bi bi-list" id="burgerIcon"></i>
     </button>
@@ -309,7 +309,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
     </div>
     <h1>Jelajahi <em>Paket Wisata</em> Kami</h1>
     <p class="lead">
-      Dari umroh, haji, hingga wisata domestik &amp; mancanegara — semua paket dikelola
+      Dari umroh, haji, hingga wisata domestik &amp; mancanegara semua paket dikelola
       langsung oleh tim profesional Nirwana Tour &amp; Travel.
     </p>
   </div>
