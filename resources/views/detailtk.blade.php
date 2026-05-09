@@ -173,19 +173,25 @@ a { text-decoration: none; }
 }
 
 /* Itinerary */
-.timeline { position: relative; padding-left: 36px; }
-.timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #e4e9f5; }
-.timeline-item { position: relative; margin-bottom: 18px; }
-.timeline-item:last-child { margin-bottom: 0; }
+.timeline { display: flex; flex-direction: column; }
+.timeline-item { display: flex; gap: 14px; }
+.timeline-kiri { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
 .timeline-dot {
-  position: absolute; left: -26px; top: 3px;
-  width: 20px; height: 20px; border-radius: 50%;
+  width: 28px; height: 28px; border-radius: 50%;
   background: #1e4dbf; color: #fff;
-  font-size: .62rem; font-weight: 700;
+  font-size: .65rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
 }
-.timeline-label { font-size: .7rem; font-weight: 700; color: #1e4dbf; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 3px; }
-.timeline-desc  { font-size: .85rem; color: #4b5563; line-height: 1.7; }
+.timeline-kiri::after {
+  content: ''; width: 2px; flex: 1; min-height: 14px;
+  background: #e4e9f5; margin: 4px 0;
+}
+.timeline-item:last-child .timeline-kiri::after { display: none; }
+.timeline-kanan { flex: 1; padding-bottom: 20px; }
+.timeline-item:last-child .timeline-kanan { padding-bottom: 0; }
+.timeline-label { font-size: .7rem; font-weight: 700; color: #1e4dbf; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 3px; padding-top: 4px; }
+.timeline-desc  { font-size: .85rem; color: #4b5563; line-height: 1.7; margin: 0; }
 
 /* STICKY BOTTOM BAR */
 .bottom-bar {
@@ -406,9 +412,13 @@ footer h4 { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-tra
         <div class="timeline">
           @foreach($paket->itinerary->sortBy('hari') as $item)
             <div class="timeline-item">
-              <div class="timeline-dot">{{ $item->hari }}</div>
-              <p class="timeline-label">Hari ke-{{ $item->hari }}</p>
-              <p class="timeline-desc">{{ $item->deskripsi }}</p>
+              <div class="timeline-kiri">
+                <div class="timeline-dot">{{ $item->hari }}</div>
+              </div>
+              <div class="timeline-kanan">
+                <p class="timeline-label">Hari ke-{{ $item->hari }}</p>
+                <p class="timeline-desc">{{ $item->deskripsi }}</p>
+              </div>
             </div>
           @endforeach
         </div>
