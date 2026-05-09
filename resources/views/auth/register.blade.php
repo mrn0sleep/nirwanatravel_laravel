@@ -1,6 +1,10 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
+        {{-- Honeypot --}}
+        <div style="display:none;">
+        <input type="text" name="website" value="">
+        </div>
 
         <!-- Name -->
         <div>
