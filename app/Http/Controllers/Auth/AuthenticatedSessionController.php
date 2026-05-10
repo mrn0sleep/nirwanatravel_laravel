@@ -33,7 +33,11 @@ class AuthenticatedSessionController extends Controller
             return redirect('/admin'); 
         }
 
-        return redirect(route('dashboard'));
+        if (!$request->user()->hasVerifiedEmail()) {
+        return redirect(route('verification.notice'));
+        }
+
+        return redirect(route('profile.edit'));
     }
 
         

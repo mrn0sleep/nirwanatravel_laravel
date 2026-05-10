@@ -95,9 +95,16 @@ a { text-decoration: none; }
   display: inline-flex; align-items: center; gap: 8px;
   background: transparent; color: #0c1d3a; font-weight: 600; font-size: .9rem;
   padding: 12px 26px; border-radius: 50px;
-  border: 2px solid #c5cfe3; transition: .2s;
+border: 2px solid #c5cfe3; transition: .2s;
 }
 .btn-ghost-dark:hover { border-color: #0c1d3a; color: #0c1d3a; transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: #fff; font-weight: 600; font-size: .9rem;
+  padding: 13px 28px; border-radius: 50px;
+  border: 2px solid rgba(255,255,255,.4); transition: .2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.7); color: #fff; transform: translateY(-2px); }
 .btn-white {
   display: inline-flex; align-items: center; gap: 8px;
   background: #fff; color: #0c1d3a; font-weight: 700; font-size: .9rem;
@@ -355,10 +362,10 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
       </p>
       <div class="hero-btns">
         <a href="https://wa.me/6282324246645?text={{ urlencode('Halo, saya ingin konsultasi paket wisata.') }}"
-           target="_blank" rel="noopener" class="btn-wa">
+target="_blank" rel="noopener" class="btn-wa">
           <i class="bi bi-whatsapp"></i> Hubungi Kami
         </a>
-        <a href="{{ route('lyn') }}" class="btn-ghost-dark">
+        <a href="{{ route('lyn') }}" class="btn-ghost">
           <i class="bi bi-compass"></i> Lihat Paket
         </a>
       </div>
@@ -531,10 +538,9 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
           dengan layanan profesional dan harga yang transparan.
         </p>
         <div class="socials">
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/nirwanatourtravels" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.facebook.com/NirwanaTourTravel" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
           <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
 
@@ -549,8 +555,10 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
         <h4>Kontak</h4>
         <a href="tel:+6282324246645" class="foot-link"><i class="bi bi-telephone"></i>+62 823-2424-6645</a>
         <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" class="foot-link"><i class="bi bi-whatsapp"></i>+62 823-2424-6645</a>
-        <a href="mailto:info@nirwanatravel.id" class="foot-link"><i class="bi bi-envelope"></i>info@nirwanatravel.id</a>
+        <a href="mailto:nirwanatourtravels@gmail.com" class="foot-link"><i class="bi bi-envelope"></i>nirwanatourtravels@gmail.com</a>
       </div>
+
+    </div>
 
     </div>
 
