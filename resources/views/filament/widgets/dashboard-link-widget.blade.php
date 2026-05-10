@@ -11,7 +11,7 @@
             </div>
             <a href="{{ route('profile.edit') }}"
                class="fi-btn fi-btn-size-md fi-color-custom fi-btn-style-filled px-4 py-2 rounded-lg text-white font-semibold"
-               style="background-color: #f59e0b;">
+               style="background-color: #12336A;">
                 Ke Profile User
             </a>
         </div>
