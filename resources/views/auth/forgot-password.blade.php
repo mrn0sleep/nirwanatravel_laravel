@@ -8,6 +8,10 @@
 
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
+        {{-- Honeypot --}}
+        <div style="display:none;">
+        <input type="text" name="website" value="">
+        </div>
 
         <!-- Email Address -->
         <div>
