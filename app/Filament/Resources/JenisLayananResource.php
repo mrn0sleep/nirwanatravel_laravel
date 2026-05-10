@@ -41,13 +41,14 @@ class JenisLayananResource extends Resource
                         ->placeholder('Contoh: Paket Umroh Ekonomi 9 Hari')
                         ->required()
                         ->unique(ignoreRecord: true)
-                        ->maxLength(255)
+                        ->maxLength(30)
                         ->minLength(5)
                         ->columnSpanFull()
                         ->validationMessages([
                         'required' => 'Nama paket wajib diisi.',
                         'unique' => 'Nama paket sudah digunakan.',
-                        'max' => 'Nama paket maksimal 255 karakter.',]),
+                        'max' => 'Nama paket maksimal 30 karakter.',
+                        'min' => 'Nama paket minimal 5 karakter',]),
 
                     Forms\Components\Select::make('jenis_wisata')
                         ->label('Jenis Wisata')
@@ -64,19 +65,19 @@ class JenisLayananResource extends Resource
                         ->label('Lokasi')
                         ->placeholder('Contoh: Makkah, Bali, Malaysia')
                         ->required()
-                        ->maxLength(100)
+                        ->maxLength(30)
                         ->validationMessages([
                         'required' => 'Lokasi wajib diisi.',
-                        'max' => 'Lokasi maksimal 100 karakter.',]),
+                        'max' => 'Lokasi maksimal 30 karakter.',]),
 
                     Forms\Components\TextInput::make('durasi')
                         ->label('Durasi')
                         ->placeholder('Contoh: 9 hari, 4D3N')
                         ->required()
-                        ->maxLength(50)
+                        ->maxLength(20)
                         ->validationMessages([
                         'required' => 'Durasi wajib diisi.',
-                        'max' => 'Durasi maksimal 50 karakter.',]),
+                        'max' => 'Durasi maksimal 20 karakter.',]),
 
                     Forms\Components\TextInput::make('harga')
                         ->label('Harga (Rp)')
@@ -104,15 +105,16 @@ class JenisLayananResource extends Resource
                         ->required()
                         ->rows(3)
                         ->minLength(10)
-                        ->maxLength(500)
+                        ->maxLength(30)
                         ->columnSpanFull()
                         ->validationMessages([  
                         'required' => 'Paragraf singkat wajib diisi.',
-                        'min' => 'Paragraf singkat minimal 20 karakter.',
-                        'max' => 'Paragraf singkat maksimal 500 karakter.',]),
+                        'min' => 'Paragraf singkat minimal 10 karakter.',
+                        'max' => 'Paragraf singkat maksimal 30 karakter.',]),
 
                     Forms\Components\RichEditor::make('deskripsi')
                         ->label('Deskripsi Lengkap')
+                        ->maxLength(150)
                         ->toolbarButtons([
                             'bold', 'italic', 'underline',
                             'bulletList', 'orderedList',
@@ -160,20 +162,22 @@ class JenisLayananResource extends Resource
                     ->label('Poin syarat')
                     ->required()
                     ->minLength(5)
-                    ->maxLength(500)
+                    ->maxLength(30)
                     ->validationMessages([
                         'required' => 'Poin syarat wajib diisi.',
                         'min' => 'Poin syarat minimal 5 karakter.',
-                        'max' => 'Poin syarat maksimal 500 karakter.',
+                        'max' => 'Poin syarat maksimal 30 karakter.',
                     ]),
                 Forms\Components\TextInput::make('urutan')
                     ->label('Urutan')
                     ->numeric()
                     ->minValue(1)
+                    ->maxLength(3)
                     ->default(null)
                     ->validationMessages([
                         'numeric' => 'Urutan harus berupa angka.',
                         'min' => 'Urutan minimal 1.',
+                        'max' => 'Urutan minimal 3.',
                     ]),
             ])
             ->orderColumn('urutan')
@@ -192,20 +196,22 @@ Forms\Components\Section::make('Fasilitas')
                     ->label('Nama fasilitas')
                     ->required()
                     ->minLength(3)
-                    ->maxLength(255)
+                    ->maxLength(40)
                     ->validationMessages([
                         'required' => 'Nama fasilitas wajib diisi.',
                         'min' => 'Nama fasilitas minimal 3 karakter.',
-                        'max' => 'Nama fasilitas maksimal 255 karakter.',
+                        'max' => 'Nama fasilitas maksimal 40 karakter.',
                     ]),
                 Forms\Components\TextInput::make('urutan')
                     ->label('Urutan')
                     ->numeric()
                     ->minValue(1)
+                    ->maxLength(3)
                     ->default(null)
                     ->validationMessages([
                         'numeric' => 'Urutan harus berupa angka.',
                         'min' => 'Urutan minimal 1.',
+                        'max' => 'Urutan minimal 3.',
                     ]),
             ])
             ->orderColumn('urutan')
@@ -224,20 +230,22 @@ Forms\Components\Section::make('Keunggulan Paket')
                     ->label('Poin keunggulan')
                     ->required()
                     ->minLength(5)
-                    ->maxLength(500)
+                    ->maxLength(30)
                     ->validationMessages([
                         'required' => 'Poin keunggulan wajib diisi.',
                         'min' => 'Poin keunggulan minimal 5 karakter.',
-                        'max' => 'Poin keunggulan maksimal 500 karakter.',
+                        'max' => 'Poin keunggulan maksimal 30 karakter.',
                     ]),
                 Forms\Components\TextInput::make('urutan')
                     ->label('Urutan')
                     ->numeric()
                     ->minValue(1)
+                    ->minValue(3)
                     ->default(null)
                     ->validationMessages([
                         'numeric' => 'Urutan harus berupa angka.',
                         'min' => 'Urutan minimal 1.',
+                        'max' => 'Urutan minimal 3.',
                     ]),
             ])
             ->orderColumn('urutan')
@@ -257,23 +265,23 @@ Forms\Components\Section::make('Itinerary')
                     ->numeric()
                     ->required()
                     ->minValue(1)
-                    ->maxValue(365)
+                    ->maxValue(30)
                     ->validationMessages([
                         'required' => 'Hari wajib diisi.',
                         'numeric' => 'Hari harus berupa angka.',
                         'min' => 'Hari minimal 1.',
-                        'max' => 'Hari maksimal 365.',
+                        'max' => 'Hari maksimal 30.',
                     ]),
                 Forms\Components\Textarea::make('deskripsi')
                     ->label('Deskripsi')
                     ->rows(3)
                     ->required()
                     ->minLength(10)
-                    ->maxLength(2000)
+                    ->maxLength(100)
                     ->validationMessages([
                         'required' => 'Deskripsi wajib diisi.',
                         'min' => 'Deskripsi minimal 10 karakter.',
-                        'max' => 'Deskripsi maksimal 2000 karakter.',
+                        'max' => 'Deskripsi maksimal 100 karakter.',
                     ]),
             ])
             ->orderColumn('hari')

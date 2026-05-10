@@ -40,7 +40,7 @@ class PasswordResetLinkController extends Controller
         RateLimiter::hit($key, 60);
 
         $request->validate([
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'exists:users,email'],
         ]);
 
 

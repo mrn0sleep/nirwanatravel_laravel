@@ -34,12 +34,12 @@ class PembelianResource extends Resource
                 Forms\Components\TextInput::make('nama_pembeli')
                     ->label('Nama Pembeli')
                     ->required()
-                    ->maxLength(255)
+                    ->maxLength(40)
                     ->minLength(3)
                     ->validationMessages([
                         'required' => 'Nama pembeli wajib diisi.',
                         'min' => 'Nama minimal 3 karakter.',
-                        'max' => 'Nama maksimal 255 karakter.',
+                        'max' => 'Nama maksimal 40 karakter.',
                     ]),
 
                 Forms\Components\TextInput::make('nomor_hp')

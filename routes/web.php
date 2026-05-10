@@ -4,19 +4,15 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',             [PageController::class, 'beranda'])->name('beranda');
-Route::get('/tentangkami',  [PageController::class, 'tk'])->name('tk');
-Route::get('/layanan',      [PageController::class, 'lyn'])->name('lyn');
-Route::get('/layanan/{id}', [PageController::class, 'dtk'])->name('detailtk');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/',[PageController::class, 'beranda'])->name('beranda');
+Route::get('/tentangkami',[PageController::class, 'tk'])->name('tk');
+Route::get('/layanan',[PageController::class, 'lyn'])->name('lyn');
+Route::get('/layanan/{id}',[PageController::class, 'dtk'])->name('detailtk');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile',    [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile',  [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile',[ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile',[ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile',[ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

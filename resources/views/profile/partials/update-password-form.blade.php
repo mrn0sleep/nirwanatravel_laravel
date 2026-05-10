@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+            {{ __('Gunakan Password yang panjang dan aman untuk digunakan') }}
         </p>
     </header>
 
@@ -32,7 +32,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button class="btn-gold">>{{ __('Save') }}</x-primary-button>
+            <x-primary-button class="btn-gold">{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p
