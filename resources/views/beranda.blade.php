@@ -572,6 +572,7 @@ footer h4 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-tra
           <a href="https://www.facebook.com/NirwanaTourTravel" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
           <a href="https://wa.me/6282324246645" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
         </div>
+        </div>
 
       <div class="col-6 col-md-3">
         <h4>Navigasi</h4>
