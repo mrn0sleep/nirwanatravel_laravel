@@ -12,8 +12,8 @@
 <style>
 /* ── RESET ───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; color: #111827; background: #fff; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; color: #111827; background: #fff; overflow-x: hidden; }
 a { text-decoration: none; }
 
 /* ── NAVBAR ──────────────────────────────────────── */
