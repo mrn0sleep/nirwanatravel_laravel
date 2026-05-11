@@ -11,8 +11,8 @@
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; color: #111827; background: #f5f2ec; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; color: #111827; background: #f5f2ec; overflow-x: hidden; }
 a { text-decoration: none; }
 
 /* NAVBAR */
